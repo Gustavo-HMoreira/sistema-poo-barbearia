@@ -12,6 +12,7 @@ public class Poobarbearia {
      */
     public static void main(String[] args) {
         System.out.println("Olá dolly");
+        System.out.println("Olá Seninha!");
                 
     }
     
