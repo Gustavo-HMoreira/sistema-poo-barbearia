@@ -33,8 +33,7 @@ public enum TipoServico {
     }
 
     //conversão de enums para codigo
-    public static TipoServico cerverteCodigo(int codigo){
-        
+    public static TipoServico converteCodigo(int codigo){
         for(TipoServico servico : TipoServico.values()){ //value retorna as constantes do enum
            if(servico.getCodigo() == codigo){ 
                return servico;
@@ -42,9 +41,7 @@ public enum TipoServico {
       }    
         return null;
     }
-        
-        
-        
+             
     @Override       
     public String toString(){
         return descricao;
