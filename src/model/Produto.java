@@ -15,9 +15,7 @@ public class Produto {
         this.idproduto = idproduto;
         this.precounidade = precounidade;
         this.quantidadeestoque = quantidadeestoque;
-        
-        
-        
+                
         }
     
     public String getNome(){
