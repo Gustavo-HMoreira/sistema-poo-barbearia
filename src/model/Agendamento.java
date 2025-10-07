@@ -4,8 +4,6 @@
  */
 package model;
 
-/*incluir o import java.time.LocalDateTime*/
-
 public class Agendamento {
     
     private int idagendamento;
