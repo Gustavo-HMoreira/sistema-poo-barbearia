@@ -59,9 +59,13 @@ public class Funcionario extends Pessoa{
         return salario;
     }
     
-    public void setSalario(){
+    public void setSalario(double salario){
         this.salario = salario;
     }
     
+    @Override
+    public String toString(){
+        return this.getNome();
+    }
     
 }
