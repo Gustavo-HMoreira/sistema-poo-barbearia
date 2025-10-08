@@ -68,12 +68,9 @@ public class Transacoes {
     
     @Override
     public String toString(){
-        return String.format("Descrição: %s | Tipo: %s | Valor: R$ %.2f | Data: %s",
+        return String.format("Descrição: %s | Tipo da transação: %s | Valor: R$ %.2f | Data: %s",
                 descricao, tipo.getDescricao(), valor,
                 data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-    }
-    
-    
-    
+    }   
     
 }
