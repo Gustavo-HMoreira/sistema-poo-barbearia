@@ -5,19 +5,19 @@ import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 
 public class RegistroPonto {
-    private Funcionario idFuncionario;
+    private Funcionario Funcionario;
     private LocalDateTime dataHora;
     private TipoPonto tipo;
     private Duration duracao;
 
-    public RegistroPonto(Funcionario idFuncionario, LocalDateTime dataHora, TipoPonto tipo) {
-        this.idFuncionario = idFuncionario;
+    public RegistroPonto(Funcionario Funcionario, LocalDateTime dataHora, TipoPonto tipo) {
+        this.Funcionario = Funcionario;
         this.dataHora = dataHora;
         this.tipo = tipo;
     }
 
     public Funcionario getIdFuncionario() {
-        return idFuncionario;
+        return Funcionario;
     }
 
     public LocalDateTime getDataHora() {
@@ -42,8 +42,7 @@ public class RegistroPonto {
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-        String texto = "Funcionário: " + idFuncionario.getNome() + " (ID: " + idFuncionario.getId() + ")" +
-                ", Tipo: " + tipo.getDescricao() +
+        String texto = "Tipo: " + tipo.getDescricao() +
                 ", Data/Hora: " + dataHora.format(formatter);
 
         if (duracao != null) { //calcular a duração que o cara trabalhou
