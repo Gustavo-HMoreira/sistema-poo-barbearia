@@ -5,9 +5,9 @@ public class Pessoa {
     private String endereco;
     private String telefone;
     private String email;
-   private String cpf;
+   private Cpf cpf;
    
-   public Pessoa (String nome, String endereco, String telefone, String email, String cpf){
+   public Pessoa (String nome, String endereco, String telefone, String email, Cpf cpf){
        this.nome = nome;
        this.endereco = endereco;
        this.telefone = telefone;
@@ -24,11 +24,11 @@ public class Pessoa {
     }
     
     
-    public String getCpf(){
+    public Cpf getCpf(){
         return cpf;
     }
     
-    public void setCpf(String cpf){
+    public void setCpf(Cpf cpf){
         this.cpf = cpf;
     }
     

@@ -9,8 +9,8 @@ public class Funcionario extends Pessoa{
     private String cargo;
     private double salario;
         
-    public Funcionario(String nome, String endereco, String telefone, String email,String cpf, String usuario, String senha, String cargo, int idFuncionario, double salario){    
-        super(nome,cpf, endereco, telefone, email);  
+    public Funcionario(String nome, String endereco, String telefone, String email,Cpf cpf, String usuario, String senha, String cargo, int idFuncionario, double salario){    
+        super(nome,endereco, telefone, email, cpf);  
         
         this.idFuncionario = idFuncionario;
         this.usuario = usuario;
@@ -63,14 +63,9 @@ public class Funcionario extends Pessoa{
         this.salario = salario;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @Override
+    public String toString(){
+        return this.getNome();
+    }
     
 }

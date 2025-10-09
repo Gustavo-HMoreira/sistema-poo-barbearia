@@ -5,77 +5,52 @@ import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 
 public class RegistroPonto {
-    
-    private int idRegistro;
-    private int idFuncionario;
-    private LocalDateTime dataHoraEntrada;
-    private LocalDateTime dataHoraSaida;
-    private double horasTrabalhadas;
-    
-    
-    public Ponto(int idRegistro, int idFuncionario){
-        this.idRegistro = idRegistro;
-        this.idFuncionario = idFuncionario; 
-        this.dataHoraEntrada = null;
-        this.dataHoraSaida = null;
-        this.horasTrabalhadas = 0.0;
+    private Funcionario Funcionario;
+    private LocalDateTime dataHora;
+    private TipoPonto tipo;
+    private Duration duracao;
+
+    public RegistroPonto(Funcionario Funcionario, LocalDateTime dataHora, TipoPonto tipo) {
+        this.Funcionario = Funcionario;
+        this.dataHora = dataHora;
+        this.tipo = tipo;
     }
 
-    public Ponto(int idRegistro, int idFuncionario, LocalDateTime dataHoraEntrada, LocalDateTie dataHoraSaida, double horasTrabalhadas){
-        this.idRegistro = idRegistro;
-        this.idFuncionario = idFuncionario; 
-        this.dataHoraEntrada = dataHoraEntrada;
-        this.dataHoraSaida = dataHoraSaida;
-        this.horasTrabalhadas = horasTrabalhadas;
-    }
-    
-    
-    public void setIdRegistro(int idRegistro) {
-        this.idRegistro = idRegistro;
-    }
-    public int getIdRegistro() {
-        return idRegistro;
-    }
-    
-    
-    public int getIdFuncionario() {
-        return idFuncionario;
-    }
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public Funcionario getIdFuncionario() {
+        return Funcionario;
     }
 
-    
-    public void setDataHoraEntrada(LocalDateTime dataHoraEntrada) {
-        this.dataHoraEntrada = dataHoraEntrada;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setDataHoraSaida(LocalDateTime dataHoraSaida) {
-        this.dataHoraSaida = dataHoraSaida;
+    public TipoPonto getTipo() {
+        return tipo;
     }
 
-    public void setHorasTrabalhadas(double horasTrabalhadas) {
-        this.horasTrabalhadas = horasTrabalhadas;
+    public Duration getDuracao() {
+        return duracao;
     }
 
-    
-
-    
-
-    public LocalDateTime getDataHoraEntrada() {
-        return dataHoraEntrada;
+    public void calcularDuracao(RegistroPonto registroSaida) {
+        if (this.tipo == TipoPonto.ENTRADA && registroSaida.getTipo() == TipoPonto.SAIDA) {
+            this.duracao = Duration.between(this.dataHora, registroSaida.getDataHora());
+        }
     }
 
-    public LocalDateTime getDataHoraSaida() {
-        return dataHoraSaida;
-    }
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-    public double getHorasTrabalhadas() {
-        return horasTrabalhadas;
+        String texto = "Tipo: " + tipo.getDescricao() +
+                ", Data/Hora: " + dataHora.format(formatter);
+
+        if (duracao != null) { //calcular a duração que o cara trabalhou
+            long horas = duracao.toHours();
+            long minutos = duracao.toMinutesPart();
+            texto += String.format(" | Duração: %dh %dmin", horas, minutos);
+        }
+
+        return texto;
     }
-    
-    
-    
-    
-    
 }
