@@ -5,8 +5,15 @@
         <group>
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/StatusAgendamento.java</file>
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Conta.java</file>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/agendamento.java</file>
             <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Produto.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Agendamento.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Transacoes.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/TipoServico.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Servico.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Pessoa.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Funcionario.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/Cliente.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/poobarbearia/src/model/RegistroPonto.java</file>
         </group>
     </open-files>
 </project-private>
