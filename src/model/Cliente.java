@@ -3,22 +3,25 @@ package model;
 
 public class Cliente extends Pessoa {
     
-    private int idcliente;
+    private int idCliente;
     
-    public Cliente(String nome, String endereco, String telefone, String email, Cpf cpf, int idcliente){
+    public Cliente(String nome, String endereco, String telefone, String email, Cpf cpf, int idCliente) {
         super(nome, endereco, telefone, email, cpf);
         
-        this.idcliente = idcliente;
+        this.idCliente = idCliente;
     }
     
     public int getIdCliente(){
-        return idcliente;
+        return idCliente;
     }
     
     public void setIdCliente(int idcliente){
-        this.idcliente = idcliente;
+        this.idCliente = idcliente;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.getNome() + ": " + idCliente;
+    }
     
 }

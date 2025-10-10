@@ -1,29 +1,33 @@
 
 package model;
 
+import java.time.LocalDateTime;
+
 public class Agendamento {
     
-    private int idagendamento;
+    private int idAgendamento;
     private Cliente cliente;
     private Servico servico;
-    private Funcionario barbeiroresponsavel;
-    private StatusAgendamento statusagendamento;
+    private Funcionario barbeiroResponsavel;
+    private LocalDateTime dataHora;
+    private StatusAgendamento statusAgendamento;
     
     
-    public Agendamento(int idagendamento, Cliente cliente, Servico servico, Funcionario barbeiroresponsavel, StatusAgendamento statusagendamento){
-        this.idagendamento = idagendamento;
+    public Agendamento(int idAgendamento, Cliente cliente, Servico servico, Funcionario barbeiroResponsavel, LocalDateTime dataHora, StatusAgendamento statusAgendamento){
+        this.idAgendamento = idAgendamento;
         this.cliente = cliente;
         this.servico = servico;
-        this.barbeiroresponsavel = barbeiroresponsavel;
-        this.statusagendamento = statusagendamento;
+        this.barbeiroResponsavel = barbeiroResponsavel;
+        this.dataHora = dataHora;
+        this.statusAgendamento = statusAgendamento;
     }
     
     public int getIdAgendamento(){
-        return idagendamento;
+        return idAgendamento;
     }
     
     public void setIdAgendamento(int idagendamento){
-        this.idagendamento = idagendamento;
+        this.idAgendamento = idagendamento;
     }
     
     
@@ -46,20 +50,32 @@ public class Agendamento {
     
     
     public Funcionario getBarbeiroResponsavel(){
-        return barbeiroresponsavel;
+        return barbeiroResponsavel;
     }
     
     public void setBarbeiroResponsavel(Funcionario barbeiroresponsavel){
-        this.barbeiroresponsavel = barbeiroresponsavel;
+        this.barbeiroResponsavel = barbeiroresponsavel;
     }
     
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
+    }
     
     public StatusAgendamento getStatusAgendamento(){
-        return statusagendamento;
+        return statusAgendamento;
     }
     
     public void setStatusAgendamento(StatusAgendamento statusagendamento){
-        this.statusagendamento = statusagendamento;
+        this.statusAgendamento = statusagendamento;
     }    
+
+    @Override
+    public String toString() {
+        return "Agendamento ID: " + idAgendamento + ", Cliente: " + cliente.getNome() + ", Serviço: " + servico.getNomeServico() + ", Barbeiro: " + barbeiroResponsavel.getNome() + ", Data/Hora: " + dataHora + ", Status: " + statusAgendamento.getDescricao();
+    }
     
 }

@@ -33,9 +33,6 @@ public enum Conta {
     
     @Override
     public String toString(){
-        return descricao;
-    }
-        
-    
-    
+        return codigo + " - " + descricao;
+    }    
 }
