@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-
-
 public class ClienteController {
     private ClienteView viewCliente = new ClienteView();
      
@@ -22,7 +20,7 @@ public class ClienteController {
             opcao = viewCliente.mostraOpcoesCliente();
             
             if (opcao == 6) {
-                System.out.println("Saindo do menu de clientes...");
+                System.out.println("Saindo do menu de clientes!");
                 break; 
             }
             
@@ -56,18 +54,20 @@ public class ClienteController {
     }
 
     private void adicionaCliente() {
-        int idCliente = viewCliente.getNewClienteId();
-       
+        int idCliente = viewCliente.getNewClienteId(); 
+        
         if (RepositorioGeral.getClientes().stream().anyMatch(c -> c.getIdCliente() == idCliente)) {
-            System.out.println("Erro: Já existe um cliente com este ID. Por favor, escolha outro ID.");
+            System.out.println("Erro: Já existe um cliente com este ID! Escolha outro ID.");
             return;
         }
 
         String nome = viewCliente.getNomeCliente();
-        String endereco = viewCliente.getNomeCliente();
+        String endereco = viewCliente.getEnderecoCliente();
         String telefone = viewCliente.getFoneCliente();
         String email = viewCliente.getEmailCliente();
         String codigoCpf = viewCliente.getCpfCliente();
+        
+        
         if (!Cpf.validaCPF(codigoCpf)) {
             System.out.println("CPF inválido!!");
             return;
@@ -83,9 +83,9 @@ public class ClienteController {
     }
 
     private void editarCliente() {
-        int id = viewCliente.getIdCliente();
+        String nome = viewCliente.getNomeClienteParaBusca();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                            .filter(c -> c.getIdCliente() == id).findFirst();
+                                     .filter(c -> c.getNome().equalsIgnoreCase(nome)).findFirst();
                                                     
 
         if (!clienteOptional.isPresent()) {
@@ -95,8 +95,10 @@ public class ClienteController {
         
         Cliente cliente = clienteOptional.get();
 
+        
         viewCliente.mostraCliente(cliente);
         int opcao = viewCliente.editaCliente();
+        
         
         switch (opcao){
             case 1: 
@@ -118,11 +120,11 @@ public class ClienteController {
     }
 
     private void removeCliente() {
-        int id = viewCliente.getIdCliente();
+        String nome = viewCliente.getNomeClienteParaBusca();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                            .filter(c -> c.getIdCliente() == id).findFirst();
+                                          .filter(c -> c.getNome().equalsIgnoreCase(nome)).findFirst();
                                                     
-     
+        
         if (!clienteOptional.isPresent()){
             System.out.println("Cliente não encontrado!");
             return;
@@ -132,11 +134,11 @@ public class ClienteController {
         viewCliente.mostraCliente(cliente);
         
         String opcaoConfirmacao = viewCliente.confirmaExclusaoCliente();
+        
         if (!opcaoConfirmacao.equalsIgnoreCase("S")) {
             System.out.println("Operação abortada!!");
             return;
         }
-        
         if (RepositorioGeral.getClientes().remove(cliente)) {
             RepositorioGeral.salvarDados();
             System.out.println("Cliente removido com sucesso!");
@@ -147,10 +149,10 @@ public class ClienteController {
     }
 
     private void mostrarCliente() {
-        int id = viewCliente.getIdCliente();
-        Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                            .filter(c -> c.getIdCliente() == id).findFirst()
-                                                    ;
+        String nome = viewCliente.getNomeClienteParaBusca();
+        Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream().filter(c -> c.getNome().equalsIgnoreCase(nome)).findFirst();
+                                           
+                                                    
         if (clienteOptional.isPresent()) {
             viewCliente.mostraCliente(clienteOptional.get());
         } else {
@@ -161,6 +163,8 @@ public class ClienteController {
     private void listarClientes() {
         viewCliente.mostraListaClientes(RepositorioGeral.getClientes());
     }
+    
+    
 
     @Override
     public String toString(){

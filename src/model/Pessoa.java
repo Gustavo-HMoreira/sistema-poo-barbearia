@@ -23,16 +23,7 @@ public class Pessoa {
         this.nome = nome;
     }
     
-    
-    public Cpf getCpf(){
-        return cpf;
-    }
-    
-    public void setCpf(Cpf cpf){
-        this.cpf = cpf;
-    }
-    
-    
+
     public String getEndereco(){
         return endereco;
     }
@@ -59,5 +50,16 @@ public class Pessoa {
         this.email = email;
     }
     
+    public Cpf getCpf(){
+        return cpf;
+    }
     
+    public void setCpf(Cpf cpf){
+        this.cpf = cpf;
+    }
+    
+    @Override
+    public String toString(){
+        return nome;
+    }
 }

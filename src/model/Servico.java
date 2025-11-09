@@ -1,64 +1,77 @@
 package model;
 
+
 public class Servico {
-    
-    private String nomeservico;
-    private String descricao;
-    private int idservico;
+    private int idServico;
+    private String nomeServico;
     private double preco;
-    private TipoServico tiposervico;
-            
-    public Servico(String nomeservico, String descricao, int idservico, double preco, TipoServico tiposervico){
-        this.nomeservico = nomeservico;
-        this.descricao = descricao;
-        this.idservico = idservico;
+    private String descricao;
+    private TipoServico tipoServico;
+
+    
+    public Servico(int idServico, String nomeServico, String descricao, double preco, TipoServico tipoServico) {
+        this.idServico = idServico;
+        this.nomeServico = nomeServico;
         this.preco = preco;
-        this.tiposervico = tiposervico;
-    }
-    
-    
-    public String getNomeServico(){
-        return nomeservico;
-    }
-    
-    public void setNomeServico(String nomeservico){
-        this.nomeservico = nomeservico;
-    }
-    
-    
-    public String getDescricao(){
-        return descricao;
-    }
-    
-    public void setDescricao(String descricao){
         this.descricao = descricao;
-    }
-    
-    
-    public int getIdServico(){
-        return idservico;
-    }
-    
-    public void setIdServico(int idservico){
-        this.idservico = idservico;
-    }
-    
-    
-    public double getPreco(){
-        return preco;
-    }
-     
-    public void setPreco(double preco){
-        this.preco = preco;
-    }
-    
-    
-    public TipoServico getTipoServico(){
-        return tiposervico;
-    }
-    
-    public void setTipoServico(TipoServico tiposervico){
-        this.tiposervico = tiposervico;
+        this.tipoServico = tipoServico;
     }
 
+    
+    public int getIdServico() {
+        return idServico;
+    }
+
+    
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
+    }
+
+   
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
+
+   
+    public double getPreco() {
+        return preco;
+    }
+
+    
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    
+    public String getDescricao() {
+        return descricao;
+    }
+
+   
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+   
+    public TipoServico getTipoServico() {
+        return tipoServico;
+    }
+
+    
+    public void setTipoServico(TipoServico tipoServico) {
+        this.tipoServico = tipoServico;
+    }
+
+   
+    @Override
+    public String toString() {
+        return "ID: " + idServico + ", Serviço: " + nomeServico + ", Preço: R$ " + String.format("%.2f", preco) + 
+               ", Descrição: " + descricao + ", Tipo: " + tipoServico.getDescricao();
+    }
 }
+

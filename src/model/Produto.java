@@ -1,27 +1,35 @@
 package model;
 
 public class Produto {
-    
+    private int idProduto;
     private String nome;
     private String descricao;
-    private String idproduto;
-    private double precounidade;
-    private int quantidadeestoque;
+    private double valorPorUnidade;
+    private int quantidadeEstoque;
     
-    
-    public Produto(String nome, String descricao, String idproduto, double precounidade, int quantidadeestoque){
+  
+    public Produto(int idProduto, String nome, String descricao, double valorUnitario, int quantidadeEstoque){
+        this.idProduto = idProduto;
         this.nome = nome;
         this.descricao = descricao;
-        this.idproduto = idproduto;
-        this.precounidade = precounidade;
-        this.quantidadeestoque = quantidadeestoque;
-                
-        }
-    
-    public String getNome(){
-            return nome;
+        this.valorPorUnidade = valorUnitario;
+        this.quantidadeEstoque = quantidadeEstoque;
     }
     
+    
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+    
+
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -31,35 +39,46 @@ public class Produto {
         return descricao;
     }
     
+   
     public void setDescricao(String descricao){
         this.descricao = descricao;
     }
     
-    
-    public String getIdProduto(){
-        return idproduto;
-    }
-    
-    public void setIdProduto(String idproduto){
-        this.idproduto = idproduto;
+   
+    public double getValorUnitario(){
+        return valorPorUnidade;
     }
     
     
-    public double getPrecoUnidade(){
-        return precounidade;
+    public void setValorUnitario(double valorUnitario){
+        this.valorPorUnidade = valorUnitario;
     }
     
-    public void setPrecoUnidade(double precounidade){
-        this.precounidade = precounidade;
-    }
-    
-    
+   
     public int getQuantidadeEstoque(){
-        return quantidadeestoque;
+        return quantidadeEstoque;
     }
     
-    public void setQuantidadeEstoque(int quantidadeestoque){
-        this.quantidadeestoque = quantidadeestoque;
+   
+    public void setQuantidadeEstoque(int quantidadeEmEstoque){
+        this.quantidadeEstoque = quantidadeEmEstoque;
+    }
+
+   
+    public void adicionaQuantidade(int quantidade) {
+        this.quantidadeEstoque += quantidade;
+    }
+
+  
+    public void removeQuantidade(int quantidade) {
+        this.quantidadeEstoque -= quantidade;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return "ID: " + idProduto + ", Nome: " + nome + ", Descrição: " + descricao + ", Valor Unitário: R$" 
+               + String.format("%.2f", valorPorUnidade) + ", Estoque: " + quantidadeEmEstoque;
     }
 }
 

@@ -43,11 +43,9 @@ public class LoginController {
     
    
     public boolean isGerente() {
-        return usuarioLogado != null && usuarioLogado.getCargo().toUpperCase().contains("GERENTE");
-               
+        return usuarioLogado != null && usuarioLogado.getCargo().toUpperCase().contains("GERENTE");           
     }
-    
-  
+     
     public boolean podeAcessarAreaFinanceira() {
         if (!isGerente()) {
             loginView.exibeAcessoNegado();
@@ -56,7 +54,6 @@ public class LoginController {
         return true;
     }
     
-  
     public boolean podeCadastrarFuncionario() {
         if (!isGerente()) {
             loginView.exibeAcessoNegado();
@@ -71,7 +68,7 @@ public class LoginController {
     
     @Override 
     public String toString(){
-        return "LoginController: usuário logado? " + usuarioLogado;
+        return "LoginController: usuário está logado? " + usuarioLogado;
     }
 }
 
