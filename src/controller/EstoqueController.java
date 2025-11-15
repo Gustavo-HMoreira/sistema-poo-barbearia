@@ -3,15 +3,21 @@ package controller;
 import model.Produto;
 import repository.RepositorioGeral;
 import view.EstoqueView;
+
 import java.util.List;
 import java.util.Optional;
 
-
-
+/**
+ * Classe responsável pela gerência dos produtos da barbearia.
+ * Fornecendo métodos para adicionar e acessar o menu de opções de produtos.
+ */
 public class EstoqueController {
     private EstoqueView viewEstoque = new EstoqueView();
      
-   
+    /**
+     * Exibe o menu de opções para os Produtos e executa a ação solicitada pelo usuário.
+     * O menu permanece ativo até que o usuário selecione a opção de sair.
+     */
     public void executaMenuEstoque(){
         int opcao = 0; 
         
@@ -19,7 +25,7 @@ public class EstoqueController {
             opcao = viewEstoque.mostraOpcoesEstoque();
             
             if (opcao == 7) {
-                System.out.println("Saindo do controle de estoque!");
+                System.out.println("Saindo do controle de estoque...");
                 break; 
             }
             
@@ -56,7 +62,6 @@ public class EstoqueController {
     }
 
     private void adicionaProduto() {
-        
         int idProduto = gerarProximoIdProduto();
         String nome = viewEstoque.getNomeProduto();
         String descricao = viewEstoque.getDescricaoProduto();
@@ -71,8 +76,8 @@ public class EstoqueController {
     private void editaProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                            .filter(p -> p.getIdProduto() == id).findFirst();
-                                                    
+                                                    .filter(p -> p.getIdProduto() == id)
+                                                    .findFirst();
 
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
@@ -91,7 +96,7 @@ public class EstoqueController {
             case 3: produto.setValorUnitario(viewEstoque.getValorProduto());
                 break;
             default: {
-                System.out.println("Opção inválida! Nenhuma alteração foi realizada.");
+                System.out.println("Opção inválida! Nenhuma alteração realizada.");
                 return;
             }
         }
@@ -102,8 +107,9 @@ public class EstoqueController {
     private void removeProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                            .filter(p -> p.getIdProduto() == id).findFirst();
-                                                    
+                                                    .filter(p -> p.getIdProduto() == id)
+                                                    .findFirst();
+
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
             return;
@@ -122,15 +128,15 @@ public class EstoqueController {
             RepositorioGeral.salvarDados();
             System.out.println("Produto removido com sucesso!");
         } else {
-            System.out.println("Falha ao remover produto!");
+            System.out.println("Falha ao remover produto! :(");
         }
     }
 
     private void mostrarProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                            .filter(p -> p.getIdProduto() == id).findFirst();
-                                                    
+                                                    .filter(p -> p.getIdProduto() == id)
+                                                    .findFirst();
         if (produtoOptional.isPresent()) {
             viewEstoque.mostraProduto(produtoOptional.get());
         } else {
@@ -140,9 +146,10 @@ public class EstoqueController {
 
     private void alteraQuantidadeProduto() {
         int id = viewEstoque.getIdProduto();
-        Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream().filter(p -> p.getIdProduto() == id)
-                                            .findFirst();
-                                                    
+        Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
+                                                    .filter(p -> p.getIdProduto() == id)
+                                                    .findFirst();
+
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
             return;
@@ -157,7 +164,7 @@ public class EstoqueController {
         } else if (opcao == 2) {
             produto.removeQuantidade(quantidade);
         } else {
-            System.out.println("Opção inválida!! Nenhuma alteraçao realizada.");
+            System.out.println("Opção inválida! Nenhuma alteração realizada.");
             return;
         }
 
@@ -171,9 +178,10 @@ public class EstoqueController {
     }
     
     private int gerarProximoIdProduto() {
-        return RepositorioGeral.getProdutos().stream().mapToInt(Produto::getIdProduto)
-               .max().orElse(0) + 1; 
-                            
+        return RepositorioGeral.getProdutos().stream()
+                .mapToInt(Produto::getIdProduto)
+                .max()
+                .orElse(0) + 1;
     }
 
     @Override 

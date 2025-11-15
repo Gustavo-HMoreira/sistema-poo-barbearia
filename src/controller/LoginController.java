@@ -4,12 +4,18 @@ import model.Funcionario;
 import repository.RepositorioGeral;
 import view.LoginView;
 
-
+/**
+ * Controlador de login.
+ * Verifica se o usuário é gerente ou funcionário comum.
+ */
 public class LoginController {
     private LoginView loginView = new LoginView();
     private Funcionario usuarioLogado = null;
     
-  
+    /**
+     * Realiza o login no sistema.
+     * @return true se login bem-sucedido, false caso contrário.
+     */
     public boolean realizarLogin() {
         loginView.exibeTelaBemVindo();
         
@@ -26,26 +32,35 @@ public class LoginController {
             return false;
         }
     }
-   
+    
+    /**
+     * Autentica um usuário com base nas credenciais.
+     */
     private Funcionario autenticarUsuario(String usuario, String senha) {
         if (usuario == null || senha == null || usuario.isEmpty() || senha.isEmpty()) {
             return null;
         }
         
         for (Funcionario funcionario : RepositorioGeral.getFuncionarios()) {
-            if (funcionario.getUsuario().equals(usuario) && funcionario.getSenha().equals(senha)) {
-                
+            if (funcionario.getUsuario().equals(usuario) && 
+                funcionario.getSenha().equals(senha)) {
                 return funcionario;
             }
         }
         return null;
     }
     
-   
+    /**
+     * Verifica se o usuário logado é gerente.
+     */
     public boolean isGerente() {
-        return usuarioLogado != null && usuarioLogado.getCargo().toUpperCase().contains("GERENTE");           
+        return usuarioLogado != null && 
+               usuarioLogado.getCargo().toUpperCase().contains("GERENTE");
     }
-     
+    
+    /**
+     * Verifica se pode acessar área financeira (apenas gerentes).
+     */
     public boolean podeAcessarAreaFinanceira() {
         if (!isGerente()) {
             loginView.exibeAcessoNegado();
@@ -54,6 +69,9 @@ public class LoginController {
         return true;
     }
     
+    /**
+     * Verifica se pode cadastrar funcionário (apenas gerentes).
+     */
     public boolean podeCadastrarFuncionario() {
         if (!isGerente()) {
             loginView.exibeAcessoNegado();
@@ -68,7 +86,7 @@ public class LoginController {
     
     @Override 
     public String toString(){
-        return "LoginController: usuário está logado? " + usuarioLogado;
+        return "LoginController: usuário logado? " + usuarioLogado;
     }
 }
 

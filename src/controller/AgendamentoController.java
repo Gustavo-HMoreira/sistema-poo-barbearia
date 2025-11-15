@@ -14,13 +14,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Controlador responsável por gerenciar as operações relacionadas aos agendamentos, como adicionar
+ * , confirmar, cancelar, editar e exibir agendamentos. 
+ * Também lida com a interação com o usuário através da classe {@link AgendamentoView}.
+ */
 public class AgendamentoController {
     
-    
+    /** Objeto responsável pela interface de entrada e saída com o usuário para agendamentos. */
     AgendamentoView viewAgendamento = new AgendamentoView();
     
-   
+    /**
+     * Executa o menu principal de agendamentos, permitindo ao usuário realizar diversas operações através 
+     * do terminal.
+     * A execução permanece ativa até que o usuário selecione a opção de "Sair".
+     */
     public void executaMenuAgendamento(){
         int opcao = 0;
         
@@ -28,7 +36,7 @@ public class AgendamentoController {
             opcao = viewAgendamento.mostraOpcoesAgendamento();
             
             if (opcao == 7) {
-                System.out.println("Saindo do menu de agendamentos!");
+                System.out.println("Saindo do menu de agendamentos...");
                 break; 
             }
             
@@ -68,9 +76,9 @@ public class AgendamentoController {
     private void adicionaAgendamento() {
         int idAgendamento = gerarProximoIdAgendamento();
         String nomeCliente = viewAgendamento.getNomeClienteParaBusca();
-        Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream().filter(c -> c.getNome().equalsIgnoreCase(nomeCliente)).findFirst();
-                                            
-                                                                                                           
+        Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
+                                                    .filter(c -> c.getNome().equalsIgnoreCase(nomeCliente))
+                                                    .findFirst();
         if (!clienteOptional.isPresent()) {
             System.out.println("Cliente não encontrado!");
             return;
@@ -79,13 +87,12 @@ public class AgendamentoController {
 
         String nomeBarbeiro = viewAgendamento.getBarbeiroResponsavel();
         Optional<Funcionario> barbeiroOptional = RepositorioGeral.getFuncionarios().stream()
-                                                 .filter(f -> f.getNome().equalsIgnoreCase(nomeBarbeiro)).findFirst();       
-                                                        
+                                                        .filter(f -> f.getNome().equalsIgnoreCase(nomeBarbeiro))
+                                                        .findFirst();
         if (!barbeiroOptional.isPresent()) {
             System.out.println("Barbeiro não encontrado!");
             return;
         }
-        
         Funcionario barbeiro = barbeiroOptional.get();
 
         String dataHoraStr = viewAgendamento.getDataHoraAgendamento();
@@ -108,18 +115,16 @@ public class AgendamentoController {
 
     private void confirmaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
-        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream().filter(a -> a.getIdAgendamento() == id).findFirst();
-                                                    
-                                                            
+        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
+                                                            .filter(a -> a.getIdAgendamento() == id)
+                                                            .findFirst();
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
             return;
         }
-        
         Agendamento agendamento = agendamentoOptional.get();
         viewAgendamento.mostraAgendamento(agendamento);
         String confirmacao = viewAgendamento.confirmaConfirmacaoAgendamento();
-        
         if (confirmacao.equalsIgnoreCase("S")) {
             agendamento.setStatusAgendamento(StatusAgendamento.CONFIRMADO);
             RepositorioGeral.salvarDados();
@@ -131,8 +136,9 @@ public class AgendamentoController {
 
     private void cancelaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
-        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream().filter(a -> a.getIdAgendamento() == id).findFirst();
-                                                                                                                       
+        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
+                                                            .filter(a -> a.getIdAgendamento() == id)
+                                                            .findFirst();
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
             return;
@@ -140,7 +146,6 @@ public class AgendamentoController {
         Agendamento agendamento = agendamentoOptional.get();
         viewAgendamento.mostraAgendamento(agendamento);
         String confirmacao = viewAgendamento.confirmaExclusaoDoAgendamento();
-        
         if (confirmacao.equalsIgnoreCase("S")) {
             agendamento.setStatusAgendamento(StatusAgendamento.CANCELADO);
             RepositorioGeral.salvarDados();
@@ -152,8 +157,9 @@ public class AgendamentoController {
 
     private void editaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
-        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream().filter(a -> a.getIdAgendamento() == id).findFirst();
-                                                                                                                       
+        Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
+                                                            .filter(a -> a.getIdAgendamento() == id)
+                                                            .findFirst();
 
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
@@ -168,25 +174,24 @@ public class AgendamentoController {
             case 1: {
                 String novaDataHoraStr = viewAgendamento.getDataHoraAgendamento();
                 agendamento.setDataHora(LocalDateTime.parse(novaDataHoraStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
-            }break;
-           
+            }
+                break;
             case 2: {
                 String novoNomeBarbeiro = viewAgendamento.getBarbeiroResponsavel();
                 Optional<Funcionario> novoBarbeiroOptional = RepositorioGeral.getFuncionarios().stream()
-                                                             .filter(f -> f.getNome().equalsIgnoreCase(novoNomeBarbeiro)).findFirst();       
-                                                                    
+                                                                    .filter(f -> f.getNome().equalsIgnoreCase(novoNomeBarbeiro))
+                                                                    .findFirst();
                 if (novoBarbeiroOptional.isPresent()) {
                     agendamento.setBarbeiroResponsavel(novoBarbeiroOptional.get());
                 } else {
                     System.out.println("Barbeiro não encontrado!");
                     return;
                 }
-            }break;
-                
+            }
+                break;
             case 3: {
                 int novoTipoServicoOpcao = viewAgendamento.getTipoServico();
                 TipoServico novoTipoServico = TipoServico.converteCodigo(novoTipoServicoOpcao);
-                
                 if (novoTipoServico != null) {
                     String novaDescricaoServico = viewAgendamento.getDescricaoOutro();
                     agendamento.setServico(new Servico(gerarProximoIdServico(), novoTipoServico.getDescricao(), novaDescricaoServico != null ? novaDescricaoServico : novoTipoServico.getDescricao(), novoTipoServico.getPreco(), novoTipoServico));
@@ -194,8 +199,8 @@ public class AgendamentoController {
                     System.out.println("Tipo de serviço inválido!");
                     return;
                 }
-            }break;
-                
+            }
+                break;
             default: {
                 System.out.println("Opção inválida! Nenhuma alteração realizada.");
                 return;
@@ -208,8 +213,8 @@ public class AgendamentoController {
     private void mostrarAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
         Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
-                                                  .filter(a -> a.getIdAgendamento() == id).findFirst();        
-                                                            
+                                                            .filter(a -> a.getIdAgendamento() == id)
+                                                            .findFirst();
         if (agendamentoOptional.isPresent()) {
             viewAgendamento.mostraAgendamento(agendamentoOptional.get());
         } else {
@@ -223,13 +228,17 @@ public class AgendamentoController {
     }
     
     private int gerarProximoIdAgendamento() {
-        return RepositorioGeral.getAgendamentos().stream().mapToInt(Agendamento::getIdAgendamento).max().orElse(0) + 1;
-                          
+        return RepositorioGeral.getAgendamentos().stream()
+                .mapToInt(Agendamento::getIdAgendamento)
+                .max()
+                .orElse(0) + 1;
     }
 
     private int gerarProximoIdServico() {
-        return RepositorioGeral.getServicos().stream().mapToInt(Servico::getIdServico).max().orElse(0) + 1;
-                             
+        return RepositorioGeral.getServicos().stream()
+                .mapToInt(Servico::getIdServico)
+                .max()
+                .orElse(0) + 1;
     }
 
     @Override 

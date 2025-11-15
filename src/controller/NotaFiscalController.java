@@ -18,7 +18,10 @@ import java.util.stream.Collectors;
 public class NotaFiscalController {
     private NotaFiscalView viewNotaFiscal = new NotaFiscalView();
      
-    
+    /**
+     * Exibe o menu de opções para as notas fiscais e executa a ação solicitada pelo usuário.
+     * O menu permanece ativo até que o usuário selecione a opção de sair.
+     */
     public void executaMenuNotaFiscal(){
         int opcao = 0; 
         
@@ -26,27 +29,27 @@ public class NotaFiscalController {
             opcao = viewNotaFiscal.mostraOpcoesNotaFiscal();
             
             if (opcao == 5) {
-                System.out.println("Saindo do menu de Notas Fiscais!");
+                System.out.println("Saindo do menu de Notas Fiscais...");
                 break; 
             }
             
             switch (opcao){
                 case 1: {
                     gerarNotaFiscal();
-                }break;
-                
+                }
+                break;
                 case 2: {
                     mostrarNotaFiscal();
-                }break;
-                
+                }
+                break;
                 case 3: {
                     listarNotasFiscais();
-                }break;
-                
+                }
+                break;
                 case 4: {
                     buscarNotasFiscaisPorCliente();
-                }break;
-                
+                }
+                break;
                 default: {
                     System.out.println("Opção inválida! Tente novamente.");
                 }
@@ -59,8 +62,8 @@ public class NotaFiscalController {
         
         int idCliente = viewNotaFiscal.getIdCliente();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                        .filter(c -> c.getIdCliente() == idCliente).findFirst();
-                                                    
+                                                    .filter(c -> c.getIdCliente() == idCliente)
+                                                    .findFirst();
         if (!clienteOptional.isPresent()) {
             System.out.println("Cliente não encontrado!");
             return;
@@ -74,21 +77,23 @@ public class NotaFiscalController {
         }
 
         List<Produto> produtosSelecionados = viewNotaFiscal.getProdutos(RepositorioGeral.getProdutos());
+        // Não é obrigatório ter produtos, então não há retorno se estiver vazio
+
         int idBarbeiro = viewNotaFiscal.getIdFuncionario();
         Optional<Funcionario> barbeiroOptional = RepositorioGeral.getFuncionarios().stream()
-                                                   .filter(f -> f.getIdFuncionario() == idBarbeiro).findFirst();
-                                                        
+                                                        .filter(f -> f.getIdFuncionario() == idBarbeiro)
+                                                        .findFirst();
         if (!barbeiroOptional.isPresent()) {
             System.out.println("Barbeiro não encontrado!");
             return;
         }
         Funcionario barbeiro = barbeiroOptional.get();
 
-        LocalDateTime dataEmissao = LocalDateTime.now(); 
+        LocalDateTime dataEmissao = LocalDateTime.now(); // Usar a data e hora atual para emissão
 
         NotaFiscal novaNotaFiscal = new NotaFiscal(idNotaFiscal, cliente, servicosSelecionados, produtosSelecionados, barbeiro, dataEmissao);
         
-        
+        // 1. Obter a forma de pagamento
         int opcaoPagamento = viewNotaFiscal.getFormaPagamento();
         FormaDePagamento forma;
         String descricaoFormaPagamento;
@@ -112,28 +117,28 @@ public class NotaFiscalController {
         Pagamento pagamento = new PagamentoTransacao(forma);
         double valorTotal = novaNotaFiscal.getValorTotal();
         
-        
+        // 2. Processar o pagamento
         pagamento.processarPagamento(valorTotal);
         descricaoFormaPagamento = pagamento.getDescricaoFormaPagamento();
         
-        
+        // 3. Registrar a forma de pagamento na Nota Fiscal
         novaNotaFiscal.setFormaPagamento(descricaoFormaPagamento);
         
-        
-        Transacoes receita = new Transacoes("Venda Nota Fiscal #" + idNotaFiscal, valorTotal, LocalDate.now(), Transacoes.TipoTransacao.RECEITA, descricaoFormaPagamento);
+        // 4. Registrar a transação de Receita no Controle Financeiro
+        Transacoes receita = new Transacoes("Venda NF #" + idNotaFiscal, valorTotal, LocalDate.now(), Transacoes.TipoTransacao.RECEITA, descricaoFormaPagamento);
         RepositorioGeral.getTransacoes().add(receita);
         
-        
+        // 5. Salvar e finalizar
         RepositorioGeral.getNotasFiscais().add(novaNotaFiscal);
         RepositorioGeral.salvarDados();
-        System.out.println("Nota Fiscal gerada com sucesso! Forma do Pagamento: " + descricaoFormaPagamento);
+        System.out.println("Nota Fiscal gerada com sucesso! Forma de Pagamento: " + descricaoFormaPagamento);
     }
 
     private void mostrarNotaFiscal() {
         int id = viewNotaFiscal.getIdNotaFiscal();
         Optional<NotaFiscal> nfOptional = RepositorioGeral.getNotasFiscais().stream()
-                                         .filter(nf -> nf.getIdNotaFiscal() == id).findFirst();
-                                                  
+                                                  .filter(nf -> nf.getIdNotaFiscal() == id)
+                                                  .findFirst();
         if (nfOptional.isPresent()) {
             viewNotaFiscal.mostraNotaFiscal(nfOptional.get());
         } else {
@@ -149,8 +154,8 @@ public class NotaFiscalController {
     private void buscarNotasFiscaisPorCliente() {
         int idCliente = viewNotaFiscal.getIdCliente();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                          .filter(c -> c.getIdCliente() == idCliente).findFirst();
-                                                    
+                                                    .filter(c -> c.getIdCliente() == idCliente)
+                                                    .findFirst();
         if (!clienteOptional.isPresent()) {
             System.out.println("Cliente não encontrado!");
             return;
@@ -158,14 +163,16 @@ public class NotaFiscalController {
         Cliente cliente = clienteOptional.get();
 
         List<NotaFiscal> notas = RepositorioGeral.getNotasFiscais().stream()
-                               .filter(nf -> nf.getCliente().equals(cliente)).collect(Collectors.toList());
-                                            
+                                            .filter(nf -> nf.getCliente().equals(cliente))
+                                            .collect(Collectors.toList());
         viewNotaFiscal.mostraListaNotasFiscais(notas);
     }
     
     private int gerarProximoIdNotaFiscal() {
-        return RepositorioGeral.getNotasFiscais().stream().mapToInt(NotaFiscal::getIdNotaFiscal)
-                .max().orElse(0) + 1; //calcula o próximo ID automaticmaente             
+        return RepositorioGeral.getNotasFiscais().stream()
+                .mapToInt(NotaFiscal::getIdNotaFiscal)
+                .max()
+                .orElse(0) + 1;
     }
 
     @Override 

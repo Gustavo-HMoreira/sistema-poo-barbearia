@@ -5,7 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Classe que representa uma Nota Fiscal na barbearia.
+ * Contém todas as informações necessárias para o controle de serviços e produtos vendidos.
+ */
 public class NotaFiscal {
     private int idNotaFiscal;
     private Cliente cliente;
@@ -16,7 +19,9 @@ public class NotaFiscal {
     private double valorTotal;
     private String formaPagamento;
     
-    
+    /**
+     * Construtor completo da Nota Fiscal.
+     */
     public NotaFiscal(int idNotaFiscal, Cliente cliente, List<Servico> servicos, List<Produto> produtos, Funcionario barbeiroResponsavel, LocalDateTime dataEmissao) {
         this.idNotaFiscal = idNotaFiscal;
         this.cliente = cliente;
@@ -25,7 +30,7 @@ public class NotaFiscal {
         this.barbeiroResponsavel = barbeiroResponsavel;
         this.dataEmissao = dataEmissao;
         this.valorTotal = calcularTotal();
-        this.formaPagamento = "Não foi informada"; 
+        this.formaPagamento = "Não Informada"; // Valor padrão para construtor existente
     }
     
     public int getIdNotaFiscal() {
@@ -90,7 +95,11 @@ public class NotaFiscal {
         this.dataEmissao = dataEmissao;
     }
     
-    
+    /**
+     * Adiciona um serviço à lista de serviços da nota fiscal.
+     * 
+     * @param servico O objeto Servico a ser adicionado.
+     */
     public void adicionarServico(Servico servico) {
         if (servico != null) {
             this.servicos.add(servico);
@@ -98,7 +107,11 @@ public class NotaFiscal {
         }
     }
     
-  
+    /**
+     * Adiciona um produto à lista de produtos da nota fiscal.
+     * 
+     * @param produto O objeto Produto a ser adicionado.
+     */
     public void adicionarProduto(Produto produto) {
         if (produto != null) {
             this.produtos.add(produto);
@@ -106,7 +119,11 @@ public class NotaFiscal {
         }
     }
     
-    
+    /**
+     * Calcula o valor total da nota fiscal (soma dos serviços e produtos).
+     * 
+     * @return Valor total da nota fiscal.
+     */
     public double calcularTotal() {
         double total = 0.0;
         for (Servico s : servicos) {
@@ -142,7 +159,7 @@ public class NotaFiscal {
         if (!produtos.isEmpty()) {
             sb.append("PRODUTOS:\n");
             for (Produto produto : produtos) {
-                sb.append("- ").append(produto.getNome()).append(" (Qtde: ").append(produto.getQuantidadeEstoque()).append(", R$ ").append(String.format("%.2f", produto.getPrecoUnidade())).append(" cada)\n");
+                sb.append("- ").append(produto.getNome()).append(" (Qtde: ").append(produto.getQuantidadeEstoque()).append(", R$ ").append(String.format("%.2f", produto.getValorUnitario())).append(" cada)\n");
             }
             sb.append("------------------------------------------------------------\n");
         }

@@ -1,7 +1,7 @@
 package controller;
 
 import repository.RepositorioGeral;
-import model.Transacao;
+import model.Transacoes;
 
 import view.ControleFinanceiroView;
 
@@ -20,11 +20,10 @@ public class ControleFinanceiroController {
             opcao = viewControleFinanceiro.mostraOpcoesControleFinanceiro();
 
             if (opcao == 5) {
-                System.out.println("Saindo controle financeiro!");
+                System.out.println("Saindo do controle financeiro...");
                 break;
             }
 
-            
             switch (opcao) {
                 case 1:
                     adicionaReceita();
@@ -45,36 +44,33 @@ public class ControleFinanceiroController {
     }
 
     private void adicionaReceita() {
-        
         String descricao = viewControleFinanceiro.getDescricaoTransacao();
         double valor = viewControleFinanceiro.getValorTransacao();
         LocalDate data = viewControleFinanceiro.getDataTransacao();
-        Transacao receita = new Transacao(descricao, valor, data, Transacao.TipoTransacao.RECEITA);
+        Transacoes receita = new Transacoes(descricao, valor, data, Transacoes.TipoTransacao.RECEITA);
         RepositorioGeral.getTransacoes().add(receita);
         RepositorioGeral.salvarDados();
         System.out.println("Receita adicionada com sucesso!");
-        
     }
 
     private void adicionaDespesa() {
-        
         String descricao = viewControleFinanceiro.getDescricaoTransacao();
         double valor = viewControleFinanceiro.getValorTransacao();
         LocalDate data = viewControleFinanceiro.getDataTransacao();
-        Transacao despesa = new Transacao(descricao, valor, data, Transacao.TipoTransacao.DESPESA);
+        Transacoes despesa = new Transacoes(descricao, valor, data, Transacoes.TipoTransacao.DESPESA);
         RepositorioGeral.getTransacoes().add(despesa);
         RepositorioGeral.salvarDados();
         System.out.println("Despesa adicionada com sucesso!");
-        
     }
 
     private void gerarRelatorioMensal() {
         int mes = viewControleFinanceiro.getMesRelatorio();
         int ano = viewControleFinanceiro.getAnoRelatorio();
 
-        List<Transacao> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
-            .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano).collect(Collectors.toList());
-              
+        List<Transacoes> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
+                .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano)
+                .collect(Collectors.toList());
+
         viewControleFinanceiro.mostraRelatorioMensal(transacoesDoMes, mes, ano);
     }
 
@@ -82,16 +78,20 @@ public class ControleFinanceiroController {
         int mes = viewControleFinanceiro.getMesRelatorio();
         int ano = viewControleFinanceiro.getAnoRelatorio();
 
-        List<Transacao> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
-              .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano).collect(Collectors.toList());
-                
+        List<Transacoes> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
+                .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano)
+                .collect(Collectors.toList());
 
-        
         double totalReceitas = transacoesDoMes.stream()
-                .filter(t -> t.getTipo() == Transacao.TipoTransacao.RECEITA).mapToDouble(Transacao::getValor).sum();
-                
+                .filter(t -> t.getTipo() == Transacoes.TipoTransacao.RECEITA)
+                .mapToDouble(Transacoes::getValor)
+                .sum();
+
         double totalDespesas = transacoesDoMes.stream()
-                .filter(t -> t.getTipo() == Transacao.TipoTransacao.DESPESA).mapToDouble(Transacao::getValor).sum();              
+                .filter(t -> t.getTipo() == Transacoes.TipoTransacao.DESPESA)
+                .mapToDouble(Transacoes::getValor)
+                .sum();
+
         viewControleFinanceiro.mostraBalancoMensal(totalReceitas, totalDespesas, mes, ano);
     }
 

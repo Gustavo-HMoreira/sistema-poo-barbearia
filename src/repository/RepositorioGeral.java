@@ -4,11 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import model.*;
 
+import model.*;
 import utilitarios.AdaptadorLocalDate;
 import utilitarios.AdaptadorLocalDateTime;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 public class RepositorioGeral {
 
@@ -45,37 +43,36 @@ public class RepositorioGeral {
             .setPrettyPrinting()
             .create();
 
-    // Getters vão retornar views imutáveis pra não ter mudança externa no json
     public static List<Cliente> getClientes() {
-        return Collections.unmodifiableList(clientes);
+        return clientes;
     }
 
     public static List<Funcionario> getFuncionarios() {
-        return Collections.unmodifiableList(funcionarios);
+        return funcionarios;
     }
 
     public static List<Servico> getServicos() {
-        return Collections.unmodifiableList(servicos);
+        return servicos;
     }
 
     public static List<Agendamento> getAgendamentos() {
-        return Collections.unmodifiableList(agendamentos);
+        return agendamentos;
     }
 
     public static List<Produto> getProdutos() {
-        return Collections.unmodifiableList(produtos);
+        return produtos;
     }
 
     public static List<NotaFiscal> getNotasFiscais() {
-        return Collections.unmodifiableList(notasFiscais);
+        return notasFiscais;
     }
 
     public static List<Transacoes> getTransacoes() {
-        return Collections.unmodifiableList(transacoes);
+        return transacoes;
     }
 
     public static List<RegistroPonto> getRegistrosPonto() {
-        return Collections.unmodifiableList(registrosPonto);
+        return registrosPonto;
     }
 
     public static void salvarDados() {
@@ -90,42 +87,18 @@ public class RepositorioGeral {
     }
 
     public static void carregarDados() {
-       
-        List<Cliente> loadedClientes = carregarLista(CLIENTES_FILE, new TypeToken<List<Cliente>>() {}.getType());
-        clientes.clear();
-        clientes.addAll(loadedClientes);
-
-        List<Funcionario> loadedFuncionarios = carregarLista(FUNCIONARIOS_FILE, new TypeToken<List<Funcionario>>() {}.getType());
-        funcionarios.clear();
-        funcionarios.addAll(loadedFuncionarios);
-
-        List<Servico> loadedServicos = carregarLista(SERVICOS_FILE, new TypeToken<List<Servico>>() {}.getType());
-        servicos.clear();
-        servicos.addAll(loadedServicos);
-
-        List<Agendamento> loadedAgendamentos = carregarLista(AGENDAMENTOS_FILE, new TypeToken<List<Agendamento>>() {}.getType());
-        agendamentos.clear();
-        agendamentos.addAll(loadedAgendamentos);
-
-        List<Produto> loadedProdutos = carregarLista(PRODUTOS_FILE, new TypeToken<List<Produto>>() {}.getType());
-        produtos.clear();
-        produtos.addAll(loadedProdutos);
-
-        List<NotaFiscal> loadedNotas = carregarLista(NOTAS_FISCAIS_FILE, new TypeToken<List<NotaFiscal>>() {}.getType());
-        notasFiscais.clear();
-        notasFiscais.addAll(loadedNotas);
-
-        List<Transacoes> loadedTransacoes = carregarLista(TRANSACOES_FILE, new TypeToken<List<Transacoes>>() {}.getType());
-        transacoes.clear();
-        transacoes.addAll(loadedTransacoes);
-
-        List<RegistroPonto> loadedRegistros = carregarLista(REGISTROS_PONTO_FILE, new TypeToken<List<RegistroPonto>>() {}.getType());
-        registrosPonto.clear();
-        registrosPonto.addAll(loadedRegistros);
+        clientes = carregarLista(CLIENTES_FILE, new TypeToken<List<Cliente>>() {}.getType());
+        funcionarios = carregarLista(FUNCIONARIOS_FILE, new TypeToken<List<Funcionario>>() {}.getType());
+        servicos = carregarLista(SERVICOS_FILE, new TypeToken<List<Servico>>() {}.getType());
+        agendamentos = carregarLista(AGENDAMENTOS_FILE, new TypeToken<List<Agendamento>>() {}.getType());
+        produtos = carregarLista(PRODUTOS_FILE, new TypeToken<List<Produto>>() {}.getType());
+        notasFiscais = carregarLista(NOTAS_FISCAIS_FILE, new TypeToken<List<NotaFiscal>>() {}.getType());
+        transacoes = carregarLista(TRANSACOES_FILE, new TypeToken<List<Transacoes>>() {}.getType());
+        registrosPonto = carregarLista(REGISTROS_PONTO_FILE, new TypeToken<List<RegistroPonto>>() {}.getType());
 
         if (funcionarios.isEmpty()) {
             System.out.println("Criando funcionário administrador padrão...");
-            funcionarios.add(new Funcionario("Admin", "Rua Principal, 1", "(99) 99999-9999", "adm@barbearia.com", new Cpf("000.000.000-00"), "admin", "admin", "Gerente", 5000.00 , 1));
+            funcionarios.add(new Funcionario("Admin", "Rua Principal, 1", "(99) 99999-9999", "admin@barbearia.com", new Cpf("000.000.000-00"), "admin", "admin", "Gerente", 5000.00, 1));
             salvarLista(funcionarios, FUNCIONARIOS_FILE, new TypeToken<List<Funcionario>>() {}.getType());
         }
     }
@@ -152,3 +125,4 @@ public class RepositorioGeral {
         }
     }
 }
+

@@ -4,6 +4,7 @@ import model.Servico;
 import repository.RepositorioGeral;
 import model.TipoServico;
 import view.ServicoView;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class ServicoController {
             opcao = viewServico.mostraOpcoesServico();
 
             if (opcao == 6) {
-                System.out.println("Saindo do menu de serviços!");
+                System.out.println("Saindo do menu de serviços...");
                 break;
             }
 
@@ -65,8 +66,9 @@ public class ServicoController {
     private void editaServico() {
         int id = viewServico.getIdServico();
         Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
-                                           .filter(s -> s.getIdServico() == id).findFirst();
-                                                    
+                                                    .filter(s -> s.getIdServico() == id)
+                                                    .findFirst();
+
         if (!servicoOptional.isPresent()) {
             System.out.println("Serviço não encontrado!");
             return;
@@ -96,7 +98,9 @@ public class ServicoController {
 
     private void removeServico() {
         int id = viewServico.getIdServico();
-        Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream().filter(s -> s.getIdServico() == id).findFirst();
+        Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
+                                                    .filter(s -> s.getIdServico() == id)
+                                                    .findFirst();
 
         if (!servicoOptional.isPresent()) {
             System.out.println("Serviço não encontrado!");
@@ -108,7 +112,7 @@ public class ServicoController {
         String confirmacao = viewServico.confirmaExclusaoServico();
 
         if (!confirmacao.equalsIgnoreCase("S")) {
-            System.out.println("Operação anulada!!");
+            System.out.println("Operação abortada!!");
             return;
         }
 
@@ -116,15 +120,15 @@ public class ServicoController {
             RepositorioGeral.salvarDados();
             System.out.println("Serviço removido com sucesso!");
         } else {
-            System.out.println("Falha ao remover serviço!" );
+            System.out.println("Falha ao remover serviço! :(");
         }
     }
 
     private void mostrarServico() {
         int id = viewServico.getIdServico();
-        Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream().filter(s -> s.getIdServico() == id)
-                                            .findFirst();
-        
+        Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
+                                                    .filter(s -> s.getIdServico() == id)
+                                                    .findFirst();
         if (servicoOptional.isPresent()) {
             viewServico.mostraServico(servicoOptional.get());
         } else {
@@ -138,10 +142,12 @@ public class ServicoController {
     }
 
     private int gerarProximoIdServico() {
-        return RepositorioGeral.getServicos().stream().mapToInt(Servico::getIdServico) .max().orElse(0) + 1;
-               
+        return RepositorioGeral.getServicos().stream()
+                .mapToInt(Servico::getIdServico)
+                .max()
+                .orElse(0) + 1;
     }
-    
+
     @Override
     public String toString() {
         return String.format("ServicoController: %d serviços registrados.", RepositorioGeral.getServicos().size());

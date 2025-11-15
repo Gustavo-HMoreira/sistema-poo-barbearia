@@ -5,6 +5,7 @@ import model.Funcionario;
 import model.RegistroPonto;
 import model.TipoPonto;
 import view.PontoView;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class PontoController {
                     consultarTodosRegistros();
                     break;
                 case 5:
-                    pontoView.exibirMensagem("Saindo do sistema de ponto!!");
+                    pontoView.exibirMensagem("Saindo do sistema de ponto...");
                     break;
                 default:
                     pontoView.exibirMensagem("Opção inválida! Tente novamente.");
@@ -50,9 +51,9 @@ public class PontoController {
             RegistroPonto novoRegistro = new RegistroPonto(idFuncionario, LocalDateTime.now(), tipo);
             RepositorioGeral.getRegistrosPonto().add(novoRegistro);
             RepositorioGeral.salvarDados();
-            pontoView.exibirMensagem("Ponto de " + tipo.getDescricao() + " registrado com sucesso para o funcionário de ID: " + idFuncionario);
+            pontoView.exibirMensagem("Ponto de " + tipo.getDescricao() + " registrado com sucesso para o funcionário ID: " + idFuncionario);
         } else {
-            pontoView.exibirMensagem("Funcionário com o ID " + idFuncionario + " não encontrado.");
+            pontoView.exibirMensagem("Funcionário com ID " + idFuncionario + " não encontrado.");
         }
     }
 
@@ -60,11 +61,12 @@ public class PontoController {
         int idFuncionario = pontoView.getIdFuncionarioParaConsulta();
         List<RegistroPonto> registrosFiltrados;
 
-        if (idFuncionario == 0) { 
+        if (idFuncionario == 0) { // 0 para todos os funcionários
             registrosFiltrados = RepositorioGeral.getRegistrosPonto();
         } else {
-            registrosFiltrados = RepositorioGeral.getRegistrosPonto().stream().filter(r -> r.getIdFuncionario() == idFuncionario)
-                               .collect(Collectors.toList());                   
+            registrosFiltrados = RepositorioGeral.getRegistrosPonto().stream()
+                    .filter(r -> r.getIdFuncionario() == idFuncionario)
+                    .collect(Collectors.toList());
         }
         pontoView.mostraRegistrosPonto(registrosFiltrados);
     }

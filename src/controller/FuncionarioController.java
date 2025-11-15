@@ -4,14 +4,21 @@ import model.Funcionario;
 import model.Cpf;
 import repository.RepositorioGeral;
 import view.FuncionarioView;
+
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Classe responsável pela gerência dos funcionários.
+ * Fornece métodos para adicionar, remover, buscar e exibir informações dos funcionários.
+ */
 public class FuncionarioController {
     private FuncionarioView viewFuncionario = new FuncionarioView();
 
-    
+    /**
+     * Exibe o menu de opções do funcionário e executa a ação selecionada pelo usuário.
+     * O menu permanece ativo até que o usuário escolha a opção de sair.
+     */
     public void executaMenuFuncionario(){
         int opcao = 0;
 
@@ -53,8 +60,8 @@ public class FuncionarioController {
     }
 
     private void adicionaFuncionario() {
-        int idFuncionario = viewFuncionario.getNewFuncionarioId(); 
-        
+        int idFuncionario = viewFuncionario.getNewFuncionarioId(); // Solicita o ID manualmente
+        // Verificar se o ID já existe
         if (RepositorioGeral.getFuncionarios().stream().anyMatch(f -> f.getIdFuncionario() == idFuncionario)) {
             System.out.println("Erro: Já existe um funcionário com este ID. Por favor, escolha outro ID.");
             return;
@@ -65,7 +72,6 @@ public class FuncionarioController {
         String telefone = viewFuncionario.getFoneFuncionario();
         String email = viewFuncionario.getEmailFuncionario();
         String codigoCpf = viewFuncionario.getCpfFuncionario();
-        
         if (!Cpf.validaCPF(codigoCpf)) {
             System.out.println("CPF inválido!!");
             return;
@@ -87,8 +93,8 @@ public class FuncionarioController {
     private void editarFuncionario() {
         String nome = viewFuncionario.getNomeFuncionarioParaBusca();
         Optional<Funcionario> funcionarioOptional = RepositorioGeral.getFuncionarios().stream()
-                                                    .filter(f -> f.getNome().equalsIgnoreCase(nome)).findFirst();
-                                                        
+                                                        .filter(f -> f.getNome().equalsIgnoreCase(nome))
+                                                        .findFirst();
 
         if (!funcionarioOptional.isPresent()) {
             System.out.println("Funcionário não encontrado!");
@@ -100,8 +106,6 @@ public class FuncionarioController {
         viewFuncionario.mostraFuncionario(funcionario);
         int opcao = viewFuncionario.editaFuncionario();
 
-        
-        
         switch (opcao){
             case 1:
                 funcionario.setEndereco(viewFuncionario.getEnderecoFuncionario());
@@ -126,7 +130,6 @@ public class FuncionarioController {
                 return;
             }
         }
-        
         RepositorioGeral.salvarDados();
         System.out.println("Funcionário editado com sucesso!");
     }
@@ -134,8 +137,8 @@ public class FuncionarioController {
     private void removeFuncionario() {
         String nome = viewFuncionario.getNomeFuncionarioParaBusca();
         Optional<Funcionario> funcionarioOptional = RepositorioGeral.getFuncionarios().stream()
-                                                    .filter(f -> f.getNome().equalsIgnoreCase(nome)).findFirst();
-                                                        
+                                                        .filter(f -> f.getNome().equalsIgnoreCase(nome))
+                                                        .findFirst();
 
         if (!funcionarioOptional.isPresent()){
             System.out.println("Funcionário não encontrado!");
@@ -163,8 +166,8 @@ public class FuncionarioController {
     private void mostrarFuncionario() {
         String nome = viewFuncionario.getNomeFuncionarioParaBusca();
         Optional<Funcionario> funcionarioOptional = RepositorioGeral.getFuncionarios().stream()
-                                                    .filter(f -> f.getNome().equalsIgnoreCase(nome)).findFirst();
-                                                        
+                                                        .filter(f -> f.getNome().equalsIgnoreCase(nome))
+                                                        .findFirst();
         if (funcionarioOptional.isPresent()) {
             viewFuncionario.mostraFuncionario(funcionarioOptional.get());
         } else {
@@ -176,7 +179,7 @@ public class FuncionarioController {
         viewFuncionario.mostraListaFuncionarios(RepositorioGeral.getFuncionarios());
     }
 
-  
+    // O método gerarProximoIdFuncionario() não é mais necessário, pois o ID será inserido manualmente.
 
     @Override
     public String toString(){

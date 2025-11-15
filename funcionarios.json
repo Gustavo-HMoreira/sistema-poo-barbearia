@@ -1,0 +1,16 @@
+[
+  {
+    "idFuncionario": 1,
+    "usuario": "admin",
+    "senha": "admin",
+    "cargo": "Gerente",
+    "salario": 5000.0,
+    "nome": "Admin",
+    "endereco": "Rua Principal, 1",
+    "telefone": "(99) 99999-9999",
+    "email": "admin@barbearia.com",
+    "cpf": {
+      "numeroCPF": "000.000.000-00"
+    }
+  }
+]

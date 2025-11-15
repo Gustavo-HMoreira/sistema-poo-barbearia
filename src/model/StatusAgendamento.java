@@ -1,40 +1,46 @@
 package model;
 
+/**
+ * Enum que representa os possíveis status de uma Ordem de Serviço.
+ */
 public enum StatusAgendamento {
-    
-    CONFIRMADO(1, "Agendamento Confirmado"),
-    PEDENTE(3, "Agendamento Pendente"),
-    CANCELADO(2, "Agendamento Cancelado");
+    PENDENTE(1, "Pendente"),
+    CANCELADO(2, "Cancelado"),
+    CONFIRMADO(3, "Confirmado");
     
     private final int codigo;
     private final String descricao;
     
-    StatusAgendamento(int codigo, String descricao){
+    StatusAgendamento(int codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
     
-    public int getCodigo(){
+    public int getCodigo() {
         return codigo;
     }
-    public String getDescricao(){
+    
+    public String getDescricao() {
         return descricao;
     }
-        
-    public static StatusAgendamento converteCodigo(int codigo){
-        for(StatusAgendamento statusAtual : StatusAgendamento.values() ){
-            
-            if(statusAtual.getCodigo() == codigo){
-                return statusAtual;
+    
+    /**
+     * Converte um código numérico para o enum correspondente.
+     * 
+     * @param codigo Código numérico do status
+     * @return StatusAgendamento correspondente ou null se inválido
+     */
+    public static StatusAgendamento converteCodigo(int codigo) {
+        for (StatusAgendamento status : StatusAgendamento.values()) {
+            if (status.getCodigo() == codigo) {
+                return status;
             }
-     
         }
-            return null;
+        return null;
     }
     
     @Override
-    public String toString(){
+    public String toString() {
         return descricao;
     }
-  
 }

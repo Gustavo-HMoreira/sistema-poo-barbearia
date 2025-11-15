@@ -1,22 +1,46 @@
 package model;
 
+/**
+ * Representa um CPF e fornece um método para validação do código.
+ */
 public class Cpf {
     private String numeroCPF;
     
-  
+/**
+* Construtor da classe {@code Cpf}.
+* Inicializa o CPF com código especificado.
+* 
+* @param numeroCPF código do CPF no formato XXX.XXX.XXX-XX
+*/    
     public Cpf(String numeroCPF){
         this.numeroCPF = numeroCPF;
     }
     
-    
+/**
+ * Pega o cpf da pessoa.
+ * 
+ * @return numeroCPF pessoa.
+ */     
     public String getNumeroCpf(){
         return numeroCPF;
     }
- 
+    
+/**
+ * Determina o número de Cpf da pessoa.
+ * 
+ * @param numeroCPF Telefone novo da pessoa.
+ */  
     public void setNumeroCpf(String numeroCPF){
         this.numeroCPF = numeroCPF;
     }
     
+/**
+* Verifica se um código de CPF é válido.
+* Utiliza o cálculo de dígitos verificadores para validar o CPF.
+* 
+* @param codigoCpf Código do CPF a ser validado.
+* @return true se o cpf for válido e false caso seja inválido
+*/
     public static boolean validaCPF(String codigoCpf){
         int soma, resto, primeiroDigito, segundoDigito;       
         codigoCpf = codigoCpf.replaceAll("[^\\d]", ""); 
@@ -25,6 +49,7 @@ public class Cpf {
             return false;
         }
         
+        // Verifica se todos os dígitos são iguais (ex: 111.111.111-11), que são CPFs inválidos
         if (codigoCpf.matches("(\\d)\\1{10}")) {
             return false;
         }
@@ -56,7 +81,12 @@ public class Cpf {
         return true;
         
     }
-          
+    
+/**
+* Retorna o CPF completo.
+* 
+* @return CPF completo.
+*/       
     @Override
     public String toString(){
         return numeroCPF;

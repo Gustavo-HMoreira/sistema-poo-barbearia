@@ -3,7 +3,7 @@ package model.pagamento;
 public class CartaoCreditoDebito implements FormaDePagamento {
     @Override
     public void pagar(double valor) {
-        System.out.println("Pagamento de R$" + valor + " realizado via Cartão de Crédito.");
+        System.out.println("Pagamento de R$" + valor + " realizado via Cartão.");
     }
 
     @Override
@@ -11,3 +11,4 @@ public class CartaoCreditoDebito implements FormaDePagamento {
         return "Cartão de Crédito / Débito";
     }
 }
+//implementação concreta

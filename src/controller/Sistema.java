@@ -3,9 +3,17 @@ package controller;
 import repository.RepositorioGeral;
 import view.ViewPrincipal;
 
+/**
+ * A classe Sistema é a principal classe de controle e gerenciamento da barbearia.
+ * Ela orquestra a interação entre as diferentes funcionalidades (clientes,
+ * funcionários, agendamentos, produtos, notas fiscais, financeiro) e gerencia o fluxo geral do sistema,
+ * exibindo o menu principal e delegando as operações para os respectivos
+ * controladores. O sistema carrega os dados persistidos no início e salva-os ao
+ * ser encerrado.
+ */
 public class Sistema {
 
-    protected static int clientesRegistro = 0;
+    protected static int quantClientesProtegido = 0;
 
     private LoginController loginController = new LoginController();
     private ViewPrincipal telaInicial = new ViewPrincipal();
@@ -16,20 +24,33 @@ public class Sistema {
     private ControleFinanceiroController controleFinanceiroController = new ControleFinanceiroController();
     private NotaFiscalController notaFiscalController = new NotaFiscalController();
     private ServicoController servicoController = new ServicoController();
-    private PontoController pontoController = new PontoController(); 
+    private PontoController pontoController = new PontoController(); // Instancia o PontoController
 
-  
+    // Métodos para Estratégia B C
+    
+    /**
+     * Obtém a quantidade de clientes cadastrados no sistema.
+     * 
+     * @return Quantidade de clientes protegidos.
+     */
     public static int getQuantClientesProtegido() {
-        return clientesRegistro;
+        return quantClientesProtegido;
     }
 
-   
-    public static void setQuantClientesProtegido(int clientesRegistro) {
-        Sistema.clientesRegistro = clientesRegistro;
+    /**
+     * Define a quantidade de clientes cadastrados no sistema.
+     * 
+     * @param quantClientesProtegido Nova quantidade de clientes.
+     */
+    public static void setQuantClientesProtegido(int quantClientesProtegido) {
+        Sistema.quantClientesProtegido = quantClientesProtegido;
     }
 
+    /**
+     * Inicia o sistema com tela de login.
+     */
     public void iniciaSistema() {
-        RepositorioGeral.carregarDados(); 
+        RepositorioGeral.carregarDados(); // Carrega todos os dados ao iniciar o sistema
 
         if (!loginController.realizarLogin()) {
             System.out.println("Falha no login. Sistema encerrado.");
@@ -64,11 +85,11 @@ public class Sistema {
                     servicoController.executaMenuServico();
                 break;
                 case 8:
-                    pontoController.executaMenuPonto(); 
+                    pontoController.executaMenuPonto(); // Nova opção para o sistema de ponto
                 break;
-                case 9: { 
-                    System.out.println("Encerrando sistema!");
-                    System.out.println("Análise pós ecerramento do sistema:");
+                case 9: { // Opção de sair foi movida para 9
+                    System.out.println("Encerrando sistema...");
+                    System.out.println("Estatísticas do sistema:");
                     System.out.println("Total de clientes cadastrados: " + RepositorioGeral.getClientes().size());
                     System.out.println("Total de funcionários cadastrados: " + RepositorioGeral.getFuncionarios().size());
                     System.out.println("Total de produtos em estoque: " + RepositorioGeral.getProdutos().size());
@@ -76,9 +97,9 @@ public class Sistema {
                     System.out.println("Total de notas fiscais emitidas: " + RepositorioGeral.getNotasFiscais().size());
                     System.out.println("Total de transações financeiras: " + RepositorioGeral.getTransacoes().size());
                     System.out.println("Total de serviços cadastrados: " + RepositorioGeral.getServicos().size());
-                    System.out.println("Total de registros de ponto: " + RepositorioGeral.getRegistrosPonto().size()); 
+                    System.out.println("Total de registros de ponto: " + RepositorioGeral.getRegistrosPonto().size()); // Nova estatística
                     
-                    RepositorioGeral.salvarDados(); 
+                    RepositorioGeral.salvarDados(); // Salva todos os dados ao encerrar o sistema
                     rodando = false;
                 }
                 break;
@@ -91,10 +112,10 @@ public class Sistema {
 
     @Override
     public String toString() {
-        
-        return "Sistema da Barbearia POO - Usuário logado: "+ (loginController.getUsuarioLogado() != null
-                ? loginController.getUsuarioLogado().getNome() : "Nenhum")+ " | Clientes: " + clientesRegistro;
-                       
+        return "Sistema da Barbearia POO - Usuário logado: "
+                + (loginController.getUsuarioLogado() != null
+                ? loginController.getUsuarioLogado().getNome() : "Nenhum")
+                + " | Clientes: " + quantClientesProtegido;
     }
 }
 

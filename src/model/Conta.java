@@ -1,38 +1,67 @@
 package model;
 
+/**
+ * Enum que representa os tipos de conta financeira disponíveis no sistema.
+ * Define se uma conta é uma receita ou despesa.
+ */
 public enum Conta {
-    
-    RECEITA(1 , "Conta referente Receita"),
-    DESPESA(2, "Conta referente Despesas");
+    RECEITA(1, "Receita"),
+    DESPESA(2, "Despesa");
     
     private final int codigo;
     private final String descricao;
     
-    Conta(int codigo, String descricao){
+    /**
+     * Construtor do enum TipoConta.
+     * 
+     * @param codigo Código numérico do tipo de conta
+     * @param descricao Descrição textual do tipo de conta
+     */
+    Conta(int codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
-
+    
+    /**
+     * Retorna o código numérico do tipo de conta.
+     * 
+     * @return O código do tipo de conta
+     */
     public int getCodigo() {
         return codigo;
     }
-
+    
+    /**
+     * Retorna a descrição do tipo de conta.
+     * 
+     * @return A descrição do tipo de conta
+     */
     public String getDescricao() {
         return descricao;
     }
     
-    
-    public static Conta converteEmCodigo(int codigo){
-        for(Conta tipo : Conta.values()){
-            if(tipo.getCodigo() == codigo){
+    /**
+     * Converte um código numérico para o tipo de conta correspondente.
+     * 
+     * @param codigo O código a ser convertido
+     * @return O TipoConta correspondente ou null se código inválido
+     */
+    public static Conta converteCodigo(int codigo) {
+        for (Conta tipo : Conta.values()) {
+            if (tipo.getCodigo() == codigo) {
                 return tipo;
-            }            
+            }
         }
-            return null;
+        return null;
     }
     
+    /**
+     * Retorna uma representação em String do tipo de conta.
+     * 
+     * @return String com código e descrição
+     */
     @Override
-    public String toString(){
+    public String toString() {
         return codigo + " - " + descricao;
-    }    
+    }
 }
