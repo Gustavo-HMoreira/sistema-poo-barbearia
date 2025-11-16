@@ -27,6 +27,7 @@ public class RepositorioGeral {
     private static final String NOTAS_FISCAIS_FILE = "notasfiscais.json";
     private static final String TRANSACOES_FILE = "transacoes.json";
     private static final String REGISTROS_PONTO_FILE = "registrosPonto.json";
+    private static final String ORDENS_SERVICO_FILE = "ordensservico.json";
 
     private static List<Cliente> clientes = new ArrayList<>();
     private static List<Funcionario> funcionarios = new ArrayList<>();
@@ -36,6 +37,7 @@ public class RepositorioGeral {
     private static List<NotaFiscal> notasFiscais = new ArrayList<>();
     private static List<Transacoes> transacoes = new ArrayList<>();
     private static List<RegistroPonto> registrosPonto = new ArrayList<>();
+    private static List<OrdemDeServico> ordensDeServico = new ArrayList<>();
 
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDateTime.class, new AdaptadorLocalDateTime())
@@ -74,6 +76,10 @@ public class RepositorioGeral {
     public static List<RegistroPonto> getRegistrosPonto() {
         return registrosPonto;
     }
+    
+    public static List<OrdemDeServico> getOrdensDeServico() {
+        return ordensDeServico;
+    }
 
     public static void salvarDados() {
         salvarLista(clientes, CLIENTES_FILE, new TypeToken<List<Cliente>>() {}.getType());
@@ -84,6 +90,7 @@ public class RepositorioGeral {
         salvarLista(notasFiscais, NOTAS_FISCAIS_FILE, new TypeToken<List<NotaFiscal>>() {}.getType());
         salvarLista(transacoes, TRANSACOES_FILE, new TypeToken<List<Transacoes>>() {}.getType());
         salvarLista(registrosPonto, REGISTROS_PONTO_FILE, new TypeToken<List<RegistroPonto>>() {}.getType());
+        salvarLista(ordensDeServico, ORDENS_SERVICO_FILE, new TypeToken<List<OrdemDeServico>>() {}.getType());
     }
 
     public static void carregarDados() {
@@ -95,6 +102,7 @@ public class RepositorioGeral {
         notasFiscais = carregarLista(NOTAS_FISCAIS_FILE, new TypeToken<List<NotaFiscal>>() {}.getType());
         transacoes = carregarLista(TRANSACOES_FILE, new TypeToken<List<Transacoes>>() {}.getType());
         registrosPonto = carregarLista(REGISTROS_PONTO_FILE, new TypeToken<List<RegistroPonto>>() {}.getType());
+        ordensDeServico = carregarLista(ORDENS_SERVICO_FILE, new TypeToken<List<OrdemDeServico>>() {}.getType());
 
         if (funcionarios.isEmpty()) {
             System.out.println("Criando funcionário administrador padrão...");

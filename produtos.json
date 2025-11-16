@@ -4,6 +4,6 @@
     "nome": "pomada",
     "descricao": "pomada hidratante",
     "valorUnitario": 35.0,
-    "quantidadeEmEstoque": 5
+    "quantidadeEstoque": 0
   }
 ]

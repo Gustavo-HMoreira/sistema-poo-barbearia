@@ -11,6 +11,10 @@ public class Poobarbearia {
         System.out.println("Iniciando sistema da barbearia!\n");
         
         try {
+            // Chamada para o Main Secundário de Testes (Questões 15, 16, 17, 18)
+            // Para desativar, basta comentar a linha abaixo.
+       //   MainTeste.main(args); 
+            
             // Carrega os dados persistidos ao iniciar o sistema
             RepositorioGeral.carregarDados();
             Sistema sistema = new Sistema();

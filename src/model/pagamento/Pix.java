@@ -10,4 +10,14 @@ public class Pix implements FormaDePagamento {
     public String getDescricao() {
         return "Pix";
     }
+    
+    /**
+     * Retorna uma representação em String da forma de pagamento.
+     * 
+     * @return String "Pix".
+     */
+    @Override
+    public String toString() {
+        return "Pix";
+    }
 }

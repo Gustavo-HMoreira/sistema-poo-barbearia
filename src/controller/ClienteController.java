@@ -4,6 +4,7 @@ import model.Cliente;
 import model.Cpf;
 import repository.RepositorioGeral;
 import view.ClienteView;
+import model.OrdemDeServico;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.Optional;
  */
 public class ClienteController {
     private ClienteView viewCliente = new ClienteView();
+    private OrdemDeServicoController osController = new OrdemDeServicoController();
      
     /**
      * Exibe o menu de opções do cliente e executa a ação selecionada pelo usuário.
@@ -22,10 +24,10 @@ public class ClienteController {
     public void executaMenuCliente(){
         int opcao = 0; 
         
-        while(opcao != 6){
+        while(opcao != 7){
             opcao = viewCliente.mostraOpcoesCliente();
             
-            if (opcao == 6) {
+            if (opcao == 7) {
                 System.out.println("Saindo do menu de clientes...");
                 break; 
             }
@@ -51,11 +53,31 @@ public class ClienteController {
                     listarClientes();
                 }
                 break;
+                case 6: {
+                    imprimirOrdensDeServico();
+                }
+                break;
                 
                 default: {
                     System.out.println("Opção inválida! Tente novamente.");
                 }
             }
+        }
+    }
+    
+    /**
+     * Questão 8: Imprime as ordens de serviço de um cliente.
+     */
+    private void imprimirOrdensDeServico() {
+        int id = viewCliente.getIdCliente();
+        Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
+                                                    .filter(c -> c.getIdCliente() == id)
+                                                    .findFirst();
+        
+        if (clienteOptional.isPresent()) {
+            osController.imprimirOrdensPorCliente(id);
+        } else {
+            System.out.println("Cliente não encontrado!");
         }
     }
 

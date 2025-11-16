@@ -3,7 +3,7 @@ package model.comparator;
 import model.Agendamento;
 import java.util.Comparator;
 import java.time.LocalDateTime;
-//Comparator com implementação!
+//Comparator com implementação é este aqui!
 
 /**
  * Classe que implementa um comparador para ordenar agendamentos em ordem crescente

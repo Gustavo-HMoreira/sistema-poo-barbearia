@@ -25,9 +25,10 @@ public class ClienteView {
         System.out.println("1 - Incluir Cliente");
         System.out.println("2 - Editar Cliente");
         System.out.println("3 - Remover Cliente");
-        System.out.println("4 - Mostrar dados de um Cliente");
-        System.out.println("5 - Listar Todos os Clientes"); // Nova opção
-        System.out.println("6 - Sair");
+	        System.out.println("4 - Mostrar dados de um Cliente");
+	        System.out.println("5 - Listar Todos os Clientes");
+	        System.out.println("6 - Imprimir Ordens de Serviço do Cliente (Questão 8)");
+	        System.out.println("7 - Sair");
         
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -93,6 +94,18 @@ public class ClienteView {
      */
     public int getNewClienteId(){
         System.out.println("Digite o ID para o novo cliente: ");
+        int id = leituraDados.nextInt();
+        leituraDados.nextLine();
+        return id;
+    }
+    
+    /**
+     * Solicita e retorna o ID de um cliente existente.
+     *
+     * @return ID do cliente
+     */
+    public int getIdCliente(){
+        System.out.println("Digite o ID do cliente: ");
         int id = leituraDados.nextInt();
         leituraDados.nextLine();
         return id;

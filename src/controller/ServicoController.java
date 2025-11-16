@@ -59,6 +59,11 @@ public class ServicoController {
 
         Servico novoServico = new Servico(idServico, nome, descricao, preco, tipo);
         RepositorioGeral.getServicos().add(novoServico);
+        
+        // Questão 11: Incrementar contadores de serviços (duas estratégias)
+        Sistema.incrementarQuantidadeServicos(); // Estratégia 1: private com getter/setter
+        Sistema.incrementarQuantidadeServicosProtegido(); // Estratégia 2: protected
+        
         RepositorioGeral.salvarDados();
         System.out.println("Serviço adicionado com sucesso!");
     }

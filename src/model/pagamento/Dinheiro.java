@@ -10,4 +10,14 @@ public class Dinheiro implements FormaDePagamento {
     public String getDescricao() {
         return "Dinheiro";
     }
+    
+    /**
+     * Retorna uma representação em String da forma de pagamento.
+     * 
+     * @return String "Dinheiro".
+     */
+    @Override
+    public String toString() {
+        return "Dinheiro";
+    }
 }

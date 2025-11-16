@@ -1,10 +1,16 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Representa um cliente, tem todas as informações de uma pessoa, com a adição de um id para verificação e facilitar a consulta
  * Esta classe herda as propriedades básicas da classe {@code Pessoa}.
  */
 public class Cliente extends Pessoa{
+    
+    // Questão 12: Lista de Ordens de Serviço do Cliente
+    private List<OrdemDeServico> ordensDeServico;
 /**
  * Atributo estático com o intuito de incrementar um digito cada vez que é criado um novo cliente. 
  */
@@ -28,6 +34,7 @@ public class Cliente extends Pessoa{
         super(nome, endereco, telefone, email, cpf);
         
         this.idCliente = idCliente;
+        this.ordensDeServico = new ArrayList<>();
     }
     
 /**
@@ -43,6 +50,26 @@ public class Cliente extends Pessoa{
     
     public int getIdCliente(){
         return idCliente;
+    }
+    
+    /**
+     * Obtém a lista de Ordens de Serviço associadas a este cliente.
+     * 
+     * @return Lista de Ordens de Serviço.
+     */
+    public List<OrdemDeServico> getOrdensDeServico() {
+        return ordensDeServico;
+    }
+
+    /**
+     * Adiciona uma Ordem de Serviço à lista do cliente.
+     * 
+     * @param ordem Ordem de Serviço a ser adicionada.
+     */
+    public void adicionarOrdemDeServico(OrdemDeServico ordem) {
+        if (ordem != null) {
+            this.ordensDeServico.add(ordem);
+        }
     }
     
 /**
