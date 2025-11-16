@@ -10,14 +10,14 @@ public class LoginView {
     private Scanner leituraDados = new Scanner(System.in);
     
     public void exibeTelaBemVindo() {
-        System.out.println("==============================");
+        System.out.println("::::::::::::::::::::::::::::::");
         System.out.println("          Bem-vindo!");
-        System.out.println("==============================");
+        System.out.println("::::::::::::::::::::::::::::::");
     }
     
     public String getUsuario() {
-        System.out.println("Usuário: ");
-        return leituraDados.nextLine().trim();
+        System.out.println("Usuario: ");
+        return leituraDados.nextLine().trim();//trim remove espaços em branco, é bom usar.
     }
     
     public String getSenha() {
@@ -26,7 +26,7 @@ public class LoginView {
     }
     
     public void exibeSucessoLogin(Funcionario funcionario) {
-        System.out.println("\n+ LOGIN REALIZADO COM SUCESSO!");
+        System.out.println("\nLOGIN REALIZADO COM SUCESSO!");
         System.out.println("Bem-vindo(a), " + funcionario.getNome() + "!");
         
         if (funcionario.getCargo().toUpperCase().contains("GERENTE")) {

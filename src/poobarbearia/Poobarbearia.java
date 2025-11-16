@@ -1,12 +1,14 @@
 package poobarbearia;
+
 import controller.Sistema;
 import repository.RepositorioGeral;
 
 
+
 public class Poobarbearia {
     public static void main(String[] args) {
-        System.out.println("- SISTEMA DE GERENCIAMENTO DA BARBEARIA -");
-        System.out.println("Iniciando sistema!\n");
+        System.out.println("< SISTEMA DE GERENCIAMENTO DA BARBEARIA >");
+        System.out.println("Iniciando sistema da barbearia!\n");
         
         try {
             // Carrega os dados persistidos ao iniciar o sistema

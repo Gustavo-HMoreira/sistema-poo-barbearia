@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "idCliente": 2,
+    "nome": "dayvid",
+    "endereco": "dayvid",
+    "telefone": "72482848248",
+    "email": "iwajdjiwdjio",
+    "cpf": {
+      "numeroCPF": "13739406623"
+    }
+  },
+  {
+    "idCliente": 99,
+    "nome": "Clara",
+    "endereco": "buraco do cachorro",
+    "telefone": "38842848",
+    "email": "dkawldkkwadk@gmail.com",
+    "cpf": {
+      "numeroCPF": "13739406623"
+    }
+  }
+]

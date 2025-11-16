@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "idNotaFiscal": 1,
+    "cliente": {
+      "idCliente": 2,
+      "nome": "dayvid",
+      "endereco": "dayvid",
+      "telefone": "72482848248",
+      "email": "iwajdjiwdjio",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "servicos": [
+      {
+        "idServico": 1,
+        "nomeServico": "cortar cabelo",
+        "preco": 50.0,
+        "descricao": "aparar os pelos",
+        "tipoServico": "CORTE_CABELO"
+      }
+    ],
+    "produtos": [
+      {
+        "idProduto": 1,
+        "nome": "pomada",
+        "descricao": "pomada hidratante",
+        "valorUnitario": 35.0,
+        "quantidadeEmEstoque": 1
+      }
+    ],
+    "barbeiroResponsavel": {
+      "idFuncionario": 2,
+      "usuario": "dolly",
+      "senha": "123",
+      "cargo": "barbeiro",
+      "salario": 1500.0,
+      "nome": "dolly",
+      "endereco": "dawidamwdo",
+      "telefone": "2482841828",
+      "email": "dwiajdijwadjaoi",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "dataEmissao": "2025-11-05T14:47:13.9719181",
+    "valorTotal": 85.0,
+    "formaPagamento": "Não Informada"
+  },
+  {
+    "idNotaFiscal": 2,
+    "cliente": {
+      "idCliente": 2,
+      "nome": "dayvid",
+      "endereco": "dayvid",
+      "telefone": "72482848248",
+      "email": "iwajdjiwdjio",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "servicos": [
+      {
+        "idServico": 1,
+        "nomeServico": "cortar cabelo",
+        "preco": 50.0,
+        "descricao": "aparar os pelos",
+        "tipoServico": "CORTE_CABELO"
+      }
+    ],
+    "produtos": [
+      {
+        "idProduto": 1,
+        "nome": "pomada",
+        "descricao": "pomada hidratante",
+        "valorUnitario": 35.0,
+        "quantidadeEmEstoque": 2
+      }
+    ],
+    "barbeiroResponsavel": {
+      "idFuncionario": 2,
+      "usuario": "dolly",
+      "senha": "123",
+      "cargo": "barbeiro",
+      "salario": 1500.0,
+      "nome": "dolly",
+      "endereco": "dawidamwdo",
+      "telefone": "2482841828",
+      "email": "dwiajdijwadjaoi",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "dataEmissao": "2025-11-05T15:12:51.8338465",
+    "valorTotal": 120.0,
+    "formaPagamento": "Dinheiro"
+  },
+  {
+    "idNotaFiscal": 3,
+    "cliente": {
+      "idCliente": 2,
+      "nome": "dayvid",
+      "endereco": "dayvid",
+      "telefone": "72482848248",
+      "email": "iwajdjiwdjio",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "servicos": [
+      {
+        "idServico": 1,
+        "nomeServico": "cortar cabelo",
+        "preco": 50.0,
+        "descricao": "aparar os pelos",
+        "tipoServico": "CORTE_CABELO"
+      }
+    ],
+    "produtos": [
+      {
+        "idProduto": 1,
+        "nome": "pomada",
+        "descricao": "pomada hidratante",
+        "valorUnitario": 35.0,
+        "quantidadeEmEstoque": 1
+      }
+    ],
+    "barbeiroResponsavel": {
+      "idFuncionario": 2,
+      "usuario": "dolly",
+      "senha": "123",
+      "cargo": "barbeiro",
+      "salario": 1500.0,
+      "nome": "dolly",
+      "endereco": "dawidamwdo",
+      "telefone": "2482841828",
+      "email": "dwiajdijwadjaoi",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "dataEmissao": "2025-11-06T10:20:19.140139",
+    "valorTotal": 85.0,
+    "formaPagamento": "Pix"
+  }
+]

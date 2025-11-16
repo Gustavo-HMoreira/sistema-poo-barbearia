@@ -26,7 +26,7 @@ public class Sistema {
     private ServicoController servicoController = new ServicoController();
     private PontoController pontoController = new PontoController(); // Instancia o PontoController
 
-    // Métodos para Estratégia B C
+    
     
     /**
      * Obtém a quantidade de clientes cadastrados no sistema.
@@ -67,7 +67,9 @@ public class Sistema {
                     clienteController.executaMenuCliente();
                 break;
                 case 2:
+                    if(loginController.podeCadastrarFuncionario()){ //verificação para funcionário 
                     funcionarioController.executaMenuFuncionario();
+                    }
                 break;
                 case 3:
                     estoqueController.executaMenuEstoque();
@@ -85,9 +87,9 @@ public class Sistema {
                     servicoController.executaMenuServico();
                 break;
                 case 8:
-                    pontoController.executaMenuPonto(); // Nova opção para o sistema de ponto
+                    pontoController.executaMenuPonto();
                 break;
-                case 9: { // Opção de sair foi movida para 9
+                case 9: { 
                     System.out.println("Encerrando sistema...");
                     System.out.println("Estatísticas do sistema:");
                     System.out.println("Total de clientes cadastrados: " + RepositorioGeral.getClientes().size());
@@ -97,9 +99,9 @@ public class Sistema {
                     System.out.println("Total de notas fiscais emitidas: " + RepositorioGeral.getNotasFiscais().size());
                     System.out.println("Total de transações financeiras: " + RepositorioGeral.getTransacoes().size());
                     System.out.println("Total de serviços cadastrados: " + RepositorioGeral.getServicos().size());
-                    System.out.println("Total de registros de ponto: " + RepositorioGeral.getRegistrosPonto().size()); // Nova estatística
+                    System.out.println("Total de registros de ponto: " + RepositorioGeral.getRegistrosPonto().size()); 
                     
-                    RepositorioGeral.salvarDados(); // Salva todos os dados ao encerrar o sistema
+                    RepositorioGeral.salvarDados(); 
                     rodando = false;
                 }
                 break;

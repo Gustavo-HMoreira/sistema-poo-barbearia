@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "descricao": "Venda NF #2",
+    "tipo": "RECEITA",
+    "valor": 120.0,
+    "data": "2025-11-05",
+    "formaPagamento": "Dinheiro"
+  },
+  {
+    "descricao": "Venda NF #3",
+    "tipo": "RECEITA",
+    "valor": 85.0,
+    "data": "2025-11-06",
+    "formaPagamento": "Pix"
+  }
+]

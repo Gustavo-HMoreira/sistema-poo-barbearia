@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "idAgendamento": 1,
+    "cliente": {
+      "idCliente": 2,
+      "nome": "dayvid",
+      "endereco": "dayvid",
+      "telefone": "72482848248",
+      "email": "iwajdjiwdjio",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "servico": {
+      "idServico": 2,
+      "nomeServico": "Corte e Barba",
+      "preco": 50.0,
+      "descricao": "Corte e Barba",
+      "tipoServico": "CORTE_E_BARBA"
+    },
+    "barbeiroResponsavel": {
+      "idFuncionario": 2,
+      "usuario": "dolly",
+      "senha": "123",
+      "cargo": "barbeiro",
+      "salario": 1500.0,
+      "nome": "dolly",
+      "endereco": "dawidamwdo",
+      "telefone": "2482841828",
+      "email": "dwiajdijwadjaoi",
+      "cpf": {
+        "numeroCPF": "13739406623"
+      }
+    },
+    "dataHora": "2025-11-06T18:00:00",
+    "statusAgendamento": "PENDENTE"
+  }
+]

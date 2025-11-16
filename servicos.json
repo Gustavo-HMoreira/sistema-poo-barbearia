@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "idServico": 1,
+    "nomeServico": "cortar cabelo",
+    "preco": 50.0,
+    "descricao": "aparar os pelos",
+    "tipoServico": "CORTE_CABELO"
+  }
+]

@@ -12,5 +12,19 @@
     "cpf": {
       "numeroCPF": "000.000.000-00"
     }
+  },
+  {
+    "idFuncionario": 2,
+    "usuario": "dolly",
+    "senha": "123",
+    "cargo": "barbeiro",
+    "salario": 1500.0,
+    "nome": "dolly",
+    "endereco": "dawidamwdo",
+    "telefone": "2482841828",
+    "email": "dwiajdijwadjaoi",
+    "cpf": {
+      "numeroCPF": "13739406623"
+    }
   }
 ]

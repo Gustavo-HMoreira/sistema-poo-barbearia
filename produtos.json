@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "idProduto": 1,
+    "nome": "pomada",
+    "descricao": "pomada hidratante",
+    "valorUnitario": 35.0,
+    "quantidadeEmEstoque": 5
+  }
+]
