@@ -1,5 +1,8 @@
 package model;
-
+/**
+ *Status simples do ponto
+ *
+ */
 public enum TipoPonto {
     
     ENTRADA("Entrada"),

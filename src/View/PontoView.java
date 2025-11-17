@@ -11,27 +11,27 @@ public class PontoView {
     private Scanner leituraDados = new Scanner(System.in);
 
     public int mostraOpcoesPonto() {
-        System.out.println("\n--- Sistema de Ponto ---");
-        System.out.println("1 - Registrar Entrada");
-        System.out.println("2 - Registrar Saída");
-        System.out.println("3 - Consultar Registros de Ponto (por funcionário)");
-        System.out.println("4 - Consultar Todos os Registros de Ponto");
-        System.out.println("5 - Sair");
-        System.out.print("Escolha uma opção: ");
+         System.out.println("\n-  Sistema de Ponto  -");
+         System.out.println("1 - Registrar Entrada");
+         System.out.println("2 - Registrar Saída");
+         System.out.println("3 - Consultar Registros de Ponto (por funcionário)");
+         System.out.println("4 - Consultar Todos os Registros de Ponto");
+         System.out.println("5 - Sair");
+         System.out.print("Escolha uma opção: ");
         int opcao = leituraDados.nextInt();
-        leituraDados.nextLine(); // Consumir a nova linha
+        leituraDados.nextLine(); // Consumir a linha
         return opcao;
     }
 
     public int getIdFuncionarioParaRegistro() {
-        System.out.print("Digite o ID do funcionário para registrar o ponto: ");
+         System.out.print("Digite o ID do funcionário para registrar o ponto: ");
         int id = leituraDados.nextInt();
         leituraDados.nextLine();
         return id;
     }
 
     public int getIdFuncionarioParaConsulta() {
-        System.out.print("Digite o ID do funcionário para consultar os registros de ponto (0 para todos): ");
+       System.out.print("Digite o ID do funcionário para consultar os registros de ponto (0 para todos): ");
         int id = leituraDados.nextInt();
         leituraDados.nextLine();
         return id;
@@ -42,7 +42,7 @@ public class PontoView {
             System.out.println("Nenhum registro de ponto encontrado.");
             return;
         }
-        System.out.println("\n--- Registros de Ponto ---");
+        System.out.println("\n -- Registros de Ponto  --");
         for (RegistroPonto registro : registros) {
             System.out.println(registro.toString());
         }

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 /**
  * Controlador responsável pelo gerenciamento de Ordens de Serviço.
- * Questão 8: Implementa operações CRUD e impressão de ordens por cliente.
+ * 
  */
 public class OrdemDeServicoController {
     
@@ -40,7 +40,7 @@ public class OrdemDeServicoController {
         if (ordemOpt.isPresent()) {
             OrdemDeServico ordem = ordemOpt.get();
             OrdemDeServico.ServicoRealizado servicoRealizado = 
-                new OrdemDeServico.ServicoRealizado(servico, barbeiro);
+                          new OrdemDeServico.ServicoRealizado(servico, barbeiro);
             ordem.adicionarServicoRealizado(servicoRealizado);
             RepositorioGeral.salvarDados();
             return true;
@@ -57,24 +57,22 @@ public class OrdemDeServicoController {
      */
     public Optional<OrdemDeServico> buscarOrdemPorId(int id) {
         return RepositorioGeral.getOrdensDeServico().stream()
-                .filter(ordem -> ordem.getId() == id)
-                .findFirst();
+                .filter(ordem -> ordem.getId() == id).findFirst();
+               
     }
     
     /**
-     * Questão 8: Busca todas as ordens de serviço de um cliente específico.
      * 
      * @param clienteId ID do cliente.
      * @return Lista de ordens de serviço do cliente.
      */
     public List<OrdemDeServico> buscarOrdensPorCliente(int clienteId) {
         return RepositorioGeral.getOrdensDeServico().stream()
-                .filter(ordem -> ordem.getClienteId() == clienteId)
-                .toList();
+                .filter(ordem -> ordem.getClienteId() == clienteId).toList();
+                
     }
     
     /**
-     * Questão 8: Imprime todas as ordens de serviço de um cliente.
      * 
      * @param clienteId ID do cliente.
      */
@@ -181,9 +179,7 @@ public class OrdemDeServicoController {
             return 1;
         }
         
-        return ordens.stream()
-                .mapToInt(OrdemDeServico::getId)
-                .max()
-                .orElse(0) + 1;
+        return ordens.stream().mapToInt(OrdemDeServico::getId).max().orElse(0) + 1;
+                                
     }
 }

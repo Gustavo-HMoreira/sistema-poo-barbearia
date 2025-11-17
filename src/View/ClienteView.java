@@ -21,14 +21,14 @@ public class ClienteView {
      * @return um número inteiro correspondente à opção selecionada pelo usuário
      */
     public int mostraOpcoesCliente(){
-        System.out.println("Digite a opção que deseja exucutar: ");
-        System.out.println("1 - Incluir Cliente");
-        System.out.println("2 - Editar Cliente");
-        System.out.println("3 - Remover Cliente");
-	        System.out.println("4 - Mostrar dados de um Cliente");
-	        System.out.println("5 - Listar Todos os Clientes");
-	        System.out.println("6 - Imprimir Ordens de Serviço do Cliente (Questão 8)");
-	        System.out.println("7 - Sair");
+          System.out.println("Digite a opção que deseja exucutar: ");
+          System.out.println("1 - Incluir Cliente");
+          System.out.println("2 - Editar Cliente");
+          System.out.println("3 - Remover Cliente");
+	  System.out.println("4 - Mostrar dados de um Cliente");
+	  System.out.println("5 - Listar Todos os Clientes");
+	  System.out.println("6 - Imprimir Ordens de Serviço do Cliente (Questão 8)");
+	  System.out.println("7 - Sair");
         
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -81,12 +81,10 @@ public class ClienteView {
      * @return CPF do cliente
      */
     public String getCpfCliente(){
-        System.out.println("Digite o CPF do cliente (XXX.XXX.XXX-XX): ");
+        System.out.println("Digite o CPF do cliente (Formato: XXX.XXX.XXX-XX): ");
         return leituraDados.nextLine();
     }
     
-
-
     /**
      * Solicita e retorna o ID para um novo cliente.
      *
@@ -145,12 +143,12 @@ public class ClienteView {
     
     /**
      * Solicita confirmação para exclusão de cliente.
-     *
+     * 
      * @return String com a confirmação do usuário
      */
     public String confirmaExclusaoCliente(){
         System.out.println("Tem certeza que deseja remover este cliente? [S/N]: ");
-        return leituraDados.nextLine().trim().toUpperCase();
+        return leituraDados.nextLine().trim().toUpperCase();   //; trim = tirar espaço e toUpperCase para deixar todas letras maiúculas 
     }
 
     /**

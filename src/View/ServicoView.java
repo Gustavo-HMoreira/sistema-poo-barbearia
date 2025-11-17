@@ -9,13 +9,13 @@ public class ServicoView {
     private Scanner leituraDados = new Scanner(System.in);
 
     public int mostraOpcoesServico() {
-        System.out.println("Digite a opção que deseja executar:");
-        System.out.println("1 - Incluir Serviço");
-        System.out.println("2 - Editar Serviço");
-        System.out.println("3 - Remover Serviço");
-        System.out.println("4 - Mostrar dados de um Serviço");
-        System.out.println("5 - Listar Todos os Serviços");
-        System.out.println("6 - Sair");
+         System.out.println("Digite a opção que deseja executar:");
+         System.out.println("1 - Incluir Serviço");
+         System.out.println("2 - Editar Serviço");
+         System.out.println("3 - Remover Serviço");
+         System.out.println("4 - Mostrar dados de um Serviço");
+         System.out.println("5 - Listar Todos os Serviços");
+         System.out.println("6 - Sair");
 
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -40,18 +40,18 @@ public class ServicoView {
     }
 
     public double getPrecoServico() {
-        System.out.println("Digite o preço do serviço: ");
+         System.out.println("Digite o preço do serviço: ");
         double preco = leituraDados.nextDouble();
         leituraDados.nextLine();
         return preco;
     }
 
     public TipoServico getTipoServico() {
-        System.out.println("Selecione o tipo de serviço:");
-        System.out.println("1 - Corte de Cabelo");
-        System.out.println("2 - Barba");
-        System.out.println("3 - Corte e Barba");
-        System.out.println("4 - Outro");
+         System.out.println("Selecione o tipo de serviço:");
+         System.out.println("1 - Corte de Cabelo");
+         System.out.println("2 - Barba");
+         System.out.println("3 - Corte e Barba");
+         System.out.println("4 - Outro");
 
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -66,15 +66,15 @@ public class ServicoView {
 
     public void mostraServico(Servico servico) {
         System.out.println("ID: " + servico.getIdServico() + "\n" +
-                           "Nome: " + servico.getNomeServico() + "\n" +
-                           "Descrição: " + servico.getDescricao() + "\n" +
-                           "Preço: R$" + String.format("%.2f", servico.getPreco()) + "\n" +
-                           "Tipo: " + servico.getTipoServico().getDescricao() + "\n");
+                  "Nome: " + servico.getNomeServico() + "\n" +
+                  "Descrição: " + servico.getDescricao() + "\n" +
+                  "Preço: R$" + String.format("%.2f", servico.getPreco()) + "\n" +
+                  "Tipo: " + servico.getTipoServico().getDescricao() + "\n");
     }
 
     public String confirmaExclusaoServico() {
         System.out.println("Tem certeza que deseja remover este serviço? \n"
-                         + "Digite [S] para confirmar ou [N] para abortar a operação!!");
+                    + "Digite [S] para confirmar ou [N] para abortar a operação!!");
         return leituraDados.nextLine();
     }
 
@@ -99,16 +99,16 @@ public class ServicoView {
         System.out.println("LISTA DE SERVIÇOS");
         for (Servico servico : servicos) {
             System.out.println("ID: " + servico.getIdServico() + 
-                             " | Nome: " + servico.getNomeServico() + 
-                             " | Preço: R$ " + String.format("%.2f", servico.getPreco()) +
-                             " | Tipo: " + servico.getTipoServico().getDescricao());
+            " | Nome: " + servico.getNomeServico() + 
+            " | Preço: R$ " + String.format("%.2f", servico.getPreco()) +
+            " | Tipo: " + servico.getTipoServico().getDescricao());
         }
-        System.out.println("============================================================");
-    }
+        System.out.println("------------------------------------------------------------");
+    }                       
 
     @Override
     public String toString() {
-        return "- Interface de Serviços -";
+        return "-  Interface de Serviços  -";
     }
 }
 

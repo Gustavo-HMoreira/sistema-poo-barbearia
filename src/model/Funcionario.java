@@ -2,7 +2,7 @@ package model;
 
 /**
  * Representa um funcionário, que tem todas as propriedades de pessoa e mais algumas informações adicionais como
- * usuário, senha, cargo e salário deste funcionário em questão
+ * usuário, senha, cargo e salário deste funcionário em questão (uso da herança)
  * 
  * Esta classe herda as propriedades básicas da classe {@code Pessoa}.
  */
@@ -121,7 +121,7 @@ public class Funcionario extends Pessoa{
     
 /**
 * Sobrescreve o método toString para retornar o nome do funcionário.
-* Consegue o nome do funcionário pois a classe Funcionario é subvlasse de Pessoa, logo posso chamar o metodo getNome().
+* Consegue o nome do funcionário pois a classe Funcionario é subvlasse de Pessoa, logo pode chamar o metodo getNome().
 * @return Nome do funcionário.
 */
     @Override

@@ -141,8 +141,8 @@ public class Transacoes {
     @Override
     public String toString() {
         return String.format("Descrição: %s | Tipo: %s | Valor: R$ %.2f | Data: %s | Forma Pagamento: %s",
-                descricao, tipo.getDescricao(), valor,
-                data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), formaPagamento);
+             descricao, tipo.getDescricao(), valor,data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), formaPagamento);
+                
     }
 }
 

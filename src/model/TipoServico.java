@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Enum que representa os tipos de serviços disponíveis na barbearia.
+ * Enum que representa os tipos de serviços disponíveis na barbearia(alguns deles).
  */
 public enum TipoServico {
     CORTE_CABELO(1, "Corte de Cabelo", 30.00),

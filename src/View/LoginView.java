@@ -10,9 +10,9 @@ public class LoginView {
     private Scanner leituraDados = new Scanner(System.in);
     
     public void exibeTelaBemVindo() {
-        System.out.println("::::::::::::::::::::::::::::::");
+        System.out.println(":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:");
         System.out.println("          Bem-vindo!");
-        System.out.println("::::::::::::::::::::::::::::::");
+        System.out.println(":=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:");
     }
     
     public String getUsuario() {
@@ -30,22 +30,22 @@ public class LoginView {
         System.out.println("Bem-vindo(a), " + funcionario.getNome() + "!");
         
         if (funcionario.getCargo().toUpperCase().contains("GERENTE")) {
-            System.out.println("Nível: GERENTE (Acesso total)\n");
+            System.out.println("Nívelde acesso: GERENTE (Acesso total)\n");
         } else {
-            System.out.println("Nível: FUNCIONÁRIO (Acesso padrão)\n");
+            System.out.println("Nível de acesso: FUNCIONÁRIO (Acesso nornal)\n");
         }
     }
     
     public void exibeErroLogin() {
-        System.out.println("\nERRO: Usuário ou senha inválidos!\n");
+        System.out.println("\nUsuário ou senha inválidos! Tente novamente mais tarde.\n");
     }
     
     public void exibeAcessoNegado() {
-        System.out.println("\nACESSO NEGADO! Apenas gerentes podem acessar esta funcionalidade.\n");
+        System.out.println("\nACESSO NEGADO! Apenas gerentes podem acessar esssa funcionalidade.\n");
     }
     
     @Override
     public String toString(){
-        return "- Interface de Login -";
+        return "-- Interface de Login --";
     }
 }

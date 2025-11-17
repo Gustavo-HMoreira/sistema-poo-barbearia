@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Representa uma fila FIFO (First In, First Out) para gerenciar atendimentos secundários.
+ * Representa uma fila FIFO(primeiro que chega, primeiro que sai) para gerenciar atendimentos secundários.
  * Quando um cliente desiste de um atendimento ou há uma vaga disponível,
- * o próximo cliente da fila é automaticamente alocado.
+ * O próximo cliente da fila é automaticamente alocado.
  */
 public class FilaAtendimento {
     private Queue<Agendamento> fila;

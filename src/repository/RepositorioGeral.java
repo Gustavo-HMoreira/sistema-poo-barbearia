@@ -17,6 +17,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por gerenciar o repositório de dados de todas as entidades do sistema.
+ * Utiliza o padrão Singleton (implícito por métodos e atributos estáticos) para manter
+ * uma única fonte de verdade para todas as listas de objetos.
+ * Realiza a persistência dos dados em arquivos JSON utilizando a biblioteca Gson.
+ */
+
 public class RepositorioGeral {
 
     private static final String CLIENTES_FILE = "clientes.json";
@@ -29,6 +36,10 @@ public class RepositorioGeral {
     private static final String REGISTROS_PONTO_FILE = "registrosPonto.json";
     private static final String ORDENS_SERVICO_FILE = "ordensservico.json";
 
+    /**
+     * Lista estática para armazenar todas as Ordens de Serviço.
+     */
+    
     private static List<Cliente> clientes = new ArrayList<>();
     private static List<Funcionario> funcionarios = new ArrayList<>();
     private static List<Servico> servicos = new ArrayList<>();
@@ -41,9 +52,8 @@ public class RepositorioGeral {
 
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDateTime.class, new AdaptadorLocalDateTime())
-            .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
-            .setPrettyPrinting()
-            .create();
+            .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate()).setPrettyPrinting().create();
+                       
 
     public static List<Cliente> getClientes() {
         return clientes;
@@ -82,6 +92,7 @@ public class RepositorioGeral {
     }
 
     public static void salvarDados() {
+        
         salvarLista(clientes, CLIENTES_FILE, new TypeToken<List<Cliente>>() {}.getType());
         salvarLista(funcionarios, FUNCIONARIOS_FILE, new TypeToken<List<Funcionario>>() {}.getType());
         salvarLista(servicos, SERVICOS_FILE, new TypeToken<List<Servico>>() {}.getType());
@@ -105,6 +116,7 @@ public class RepositorioGeral {
         ordensDeServico = carregarLista(ORDENS_SERVICO_FILE, new TypeToken<List<OrdemDeServico>>() {}.getType());
 
         if (funcionarios.isEmpty()) {
+            
             System.out.println("Criando funcionário administrador padrão...");
             funcionarios.add(new Funcionario("Admin", "Rua Principal, 1", "(99) 99999-9999", "admin@barbearia.com", new Cpf("000.000.000-00"), "admin", "admin", "Gerente", 5000.00, 1));
             salvarLista(funcionarios, FUNCIONARIOS_FILE, new TypeToken<List<Funcionario>>() {}.getType());
@@ -121,6 +133,7 @@ public class RepositorioGeral {
     }
 
     private static <T> List<T> carregarLista(String caminhoDoJson, Type tipoDaLista) {
+        
         try (FileReader reader = new FileReader(caminhoDoJson)) {
             List<T> dados = gson.fromJson(reader, tipoDaLista);
             return (dados != null) ? dados : new ArrayList<>();

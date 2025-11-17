@@ -159,7 +159,8 @@ public class NotaFiscal {
         if (!produtos.isEmpty()) {
             sb.append("PRODUTOS:\n");
             for (Produto produto : produtos) {
-                sb.append("- ").append(produto.getNome()).append(" (Qtde: ").append(produto.getQuantidadeEstoque()).append(", R$ ").append(String.format("%.2f", produto.getValorUnitario())).append(" cada)\n");
+                sb.append("- ").append(produto.getNome()).append(" (Qtde: ").append(produto.getQuantidadeEstoque())
+                          .append(", R$ ").append(String.format("%.2f", produto.getValorUnitario())).append(" cada)\n");
             }
             sb.append("------------------------------------------------------------\n");
         }

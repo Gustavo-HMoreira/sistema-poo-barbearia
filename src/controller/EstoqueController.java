@@ -23,7 +23,6 @@ public class EstoqueController {
         
         while(opcao != 7){
             opcao = viewEstoque.mostraOpcoesEstoque();
-            
             if (opcao == 7) {
                 System.out.println("Saindo do controle de estoque...");
                 break; 
@@ -63,22 +62,21 @@ public class EstoqueController {
 
     private void adicionaProduto() {
         int idProduto = gerarProximoIdProduto();
-        String nome = viewEstoque.getNomeProduto();
-        String descricao = viewEstoque.getDescricaoProduto();
+         String nome = viewEstoque.getNomeProduto();
+         String descricao = viewEstoque.getDescricaoProduto();
         double valorUnitario = viewEstoque.getValorProduto();
         int quantidade = viewEstoque.getQuantidadeProduto();
         Produto novoProduto = new Produto(idProduto, nome, descricao, valorUnitario, quantidade);
         RepositorioGeral.getProdutos().add(novoProduto);
         RepositorioGeral.salvarDados();
-        System.out.println("Produto adicionado com sucesso!");
+         System.out.println("Produto adicionado com sucesso!");
     }
 
     private void editaProduto() {
         int id = viewEstoque.getIdProduto();
-        Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                                    .filter(p -> p.getIdProduto() == id)
-                                                    .findFirst();
-
+        Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream().filter(p -> p.getIdProduto() == id).findFirst();
+                                                    
+                                                    
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
             return;
@@ -107,8 +105,8 @@ public class EstoqueController {
     private void removeProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                                    .filter(p -> p.getIdProduto() == id)
-                                                    .findFirst();
+                                       .filter(p -> p.getIdProduto() == id).findFirst();
+                                                  
 
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
@@ -135,8 +133,8 @@ public class EstoqueController {
     private void mostrarProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                                    .filter(p -> p.getIdProduto() == id)
-                                                    .findFirst();
+                                     .filter(p -> p.getIdProduto() == id).findFirst();
+                                                    
         if (produtoOptional.isPresent()) {
             viewEstoque.mostraProduto(produtoOptional.get());
         } else {
@@ -147,8 +145,8 @@ public class EstoqueController {
     private void alteraQuantidadeProduto() {
         int id = viewEstoque.getIdProduto();
         Optional<Produto> produtoOptional = RepositorioGeral.getProdutos().stream()
-                                                    .filter(p -> p.getIdProduto() == id)
-                                                    .findFirst();
+                                   .filter(p -> p.getIdProduto() == id).findFirst();
+                                                    
 
         if (!produtoOptional.isPresent()) {
             System.out.println("Produto não encontrado!");
@@ -178,10 +176,8 @@ public class EstoqueController {
     }
     
     private int gerarProximoIdProduto() {
-        return RepositorioGeral.getProdutos().stream()
-                .mapToInt(Produto::getIdProduto)
-                .max()
-                .orElse(0) + 1;
+        return RepositorioGeral.getProdutos().stream().mapToInt(Produto::getIdProduto).max().orElse(0) + 1;
+             
     }
 
     @Override 

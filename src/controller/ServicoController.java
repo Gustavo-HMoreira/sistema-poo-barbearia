@@ -60,9 +60,9 @@ public class ServicoController {
         Servico novoServico = new Servico(idServico, nome, descricao, preco, tipo);
         RepositorioGeral.getServicos().add(novoServico);
         
-        // Questão 11: Incrementar contadores de serviços (duas estratégias)
-        Sistema.incrementarQuantidadeServicos(); // Estratégia 1: private com getter/setter
-        Sistema.incrementarQuantidadeServicosProtegido(); // Estratégia 2: protected
+        
+        Sistema.incrementarQuantidadeServicos(); //1 = private com getter/setter
+        Sistema.incrementarQuantidadeServicosProtegido(); //2 = protected
         
         RepositorioGeral.salvarDados();
         System.out.println("Serviço adicionado com sucesso!");
@@ -71,8 +71,7 @@ public class ServicoController {
     private void editaServico() {
         int id = viewServico.getIdServico();
         Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
-                                                    .filter(s -> s.getIdServico() == id)
-                                                    .findFirst();
+                                      .filter(s -> s.getIdServico() == id).findFirst();                                                    
 
         if (!servicoOptional.isPresent()) {
             System.out.println("Serviço não encontrado!");
@@ -104,9 +103,8 @@ public class ServicoController {
     private void removeServico() {
         int id = viewServico.getIdServico();
         Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
-                                                    .filter(s -> s.getIdServico() == id)
-                                                    .findFirst();
-
+                                        .filter(s -> s.getIdServico() == id).findFirst();
+                                                    
         if (!servicoOptional.isPresent()) {
             System.out.println("Serviço não encontrado!");
             return;
@@ -132,8 +130,8 @@ public class ServicoController {
     private void mostrarServico() {
         int id = viewServico.getIdServico();
         Optional<Servico> servicoOptional = RepositorioGeral.getServicos().stream()
-                                                    .filter(s -> s.getIdServico() == id)
-                                                    .findFirst();
+                                        .filter(s -> s.getIdServico() == id).findFirst();
+                                                    
         if (servicoOptional.isPresent()) {
             viewServico.mostraServico(servicoOptional.get());
         } else {
@@ -148,9 +146,8 @@ public class ServicoController {
 
     private int gerarProximoIdServico() {
         return RepositorioGeral.getServicos().stream()
-                .mapToInt(Servico::getIdServico)
-                .max()
-                .orElse(0) + 1;
+                .mapToInt(Servico::getIdServico).max().orElse(0) + 1;
+            
     }
 
     @Override

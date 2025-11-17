@@ -1,6 +1,8 @@
 package model;
 
 /**
+ * 
+ * 
  * Enum que representa os possíveis status de uma Ordem de Serviço.
  */
 public enum StatusAgendamento {
@@ -26,7 +28,6 @@ public enum StatusAgendamento {
     
     /**
      * Converte um código numérico para o enum correspondente.
-     * 
      * @param codigo Código numérico do status
      * @return StatusAgendamento correspondente ou null se inválido
      */

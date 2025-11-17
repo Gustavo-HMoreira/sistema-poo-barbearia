@@ -113,7 +113,8 @@ public class Servico {
      */
     @Override
     public String toString() {
-        return "ID: " + idServico + ", Serviço: " + nomeServico + ", Preço: R$ " + String.format("%.2f", preco) + ", Descrição: " + descricao + ", Tipo: " + tipoServico.getDescricao();
+        return "ID: " + idServico + ", Serviço: " + nomeServico + ", Preço: R$ " + String.format("%.2f", preco) + ", Descrição: " 
+                + descricao + ", Tipo: " + tipoServico.getDescricao();
     }
 }
 

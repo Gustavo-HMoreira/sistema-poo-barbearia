@@ -36,10 +36,9 @@ public class AgendamentoController {
             opcao = viewAgendamento.mostraOpcoesAgendamento();
             
             if (opcao == 7) {
-                System.out.println("Saindo do menu de agendamentos...");
+                System.out.println("Saindo do menu de agendamentos!");
                 break; 
             }
-            
             switch (opcao){
                 case 1: {
                     adicionaAgendamento();
@@ -77,18 +76,18 @@ public class AgendamentoController {
         int idAgendamento = gerarProximoIdAgendamento();
         String nomeCliente = viewAgendamento.getNomeClienteParaBusca();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                                    .filter(c -> c.getNome().equalsIgnoreCase(nomeCliente))
-                                                    .findFirst();
+                                            .filter(c -> c.getNome().equalsIgnoreCase(nomeCliente)).findFirst();
+                                                    
         if (!clienteOptional.isPresent()) {
-            System.out.println("Cliente não encontrado!");
+            System.out.println("Cliente não encontrado! ");
             return;
         }
         Cliente cliente = clienteOptional.get();
 
         String nomeBarbeiro = viewAgendamento.getBarbeiroResponsavel();
         Optional<Funcionario> barbeiroOptional = RepositorioGeral.getFuncionarios().stream()
-                                                        .filter(f -> f.getNome().equalsIgnoreCase(nomeBarbeiro))
-                                                        .findFirst();
+                                           .filter(f -> f.getNome().equalsIgnoreCase(nomeBarbeiro)).findFirst();
+                                                        
         if (!barbeiroOptional.isPresent()) {
             System.out.println("Barbeiro não encontrado!");
             return;
@@ -96,7 +95,7 @@ public class AgendamentoController {
         Funcionario barbeiro = barbeiroOptional.get();
 
         String dataHoraStr = viewAgendamento.getDataHoraAgendamento();
-        LocalDateTime dataHora = LocalDateTime.parse(dataHoraStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        LocalDateTime dataHora = LocalDateTime.parse(dataHoraStr, DateTimeFormatter.ofPattern("DD/MM/YYYY HH:mm"));
 
         int tipoServicoOpcao = viewAgendamento.getTipoServico();
         TipoServico tipoServico = TipoServico.converteCodigo(tipoServicoOpcao);
@@ -104,8 +103,10 @@ public class AgendamentoController {
             System.out.println("Tipo de serviço inválido!");
             return;
         }
+        
         String descricaoServico = viewAgendamento.getDescricaoOutro();
-        Servico servico = new Servico(gerarProximoIdServico(), tipoServico.getDescricao(), descricaoServico != null ? descricaoServico : tipoServico.getDescricao(), tipoServico.getPreco(), tipoServico);
+        Servico servico = new Servico(gerarProximoIdServico(), tipoServico.getDescricao(), 
+                descricaoServico != null ? descricaoServico : tipoServico.getDescricao(), tipoServico.getPreco(), tipoServico);
 
         Agendamento novoAgendamento = new Agendamento(idAgendamento, cliente, servico, barbeiro, dataHora, StatusAgendamento.PENDENTE);
         RepositorioGeral.getAgendamentos().add(novoAgendamento);
@@ -116,15 +117,17 @@ public class AgendamentoController {
     private void confirmaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
         Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
-                                                            .filter(a -> a.getIdAgendamento() == id)
-                                                            .findFirst();
+                                                  .filter(a -> a.getIdAgendamento() == id).findFirst();
+                                                            
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
             return;
         }
+        
         Agendamento agendamento = agendamentoOptional.get();
         viewAgendamento.mostraAgendamento(agendamento);
         String confirmacao = viewAgendamento.confirmaConfirmacaoAgendamento();
+        
         if (confirmacao.equalsIgnoreCase("S")) {
             agendamento.setStatusAgendamento(StatusAgendamento.CONFIRMADO);
             RepositorioGeral.salvarDados();
@@ -137,15 +140,17 @@ public class AgendamentoController {
     private void cancelaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
         Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
-                                                            .filter(a -> a.getIdAgendamento() == id)
-                                                            .findFirst();
+                                           .filter(a -> a.getIdAgendamento() == id).findFirst();
+                                                            
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
             return;
         }
+        
         Agendamento agendamento = agendamentoOptional.get();
         viewAgendamento.mostraAgendamento(agendamento);
         String confirmacao = viewAgendamento.confirmaExclusaoDoAgendamento();
+        
         if (confirmacao.equalsIgnoreCase("S")) {
             agendamento.setStatusAgendamento(StatusAgendamento.CANCELADO);
             RepositorioGeral.salvarDados();
@@ -158,8 +163,8 @@ public class AgendamentoController {
     private void editaAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
         Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
-                                                            .filter(a -> a.getIdAgendamento() == id)
-                                                            .findFirst();
+                                           .filter(a -> a.getIdAgendamento() == id).findFirst();
+                                                            
 
         if (!agendamentoOptional.isPresent()) {
             System.out.println("Agendamento não encontrado!");
@@ -173,14 +178,14 @@ public class AgendamentoController {
         switch (opcao) {
             case 1: {
                 String novaDataHoraStr = viewAgendamento.getDataHoraAgendamento();
-                agendamento.setDataHora(LocalDateTime.parse(novaDataHoraStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+                agendamento.setDataHora(LocalDateTime.parse(novaDataHoraStr, DateTimeFormatter.ofPattern("DD/MM/YYYY HH:MM")));
             }
                 break;
             case 2: {
                 String novoNomeBarbeiro = viewAgendamento.getBarbeiroResponsavel();
                 Optional<Funcionario> novoBarbeiroOptional = RepositorioGeral.getFuncionarios().stream()
-                                                                    .filter(f -> f.getNome().equalsIgnoreCase(novoNomeBarbeiro))
-                                                                    .findFirst();
+                                           .filter(f -> f.getNome().equalsIgnoreCase(novoNomeBarbeiro)).findFirst();
+                                                                    
                 if (novoBarbeiroOptional.isPresent()) {
                     agendamento.setBarbeiroResponsavel(novoBarbeiroOptional.get());
                 } else {
@@ -194,7 +199,8 @@ public class AgendamentoController {
                 TipoServico novoTipoServico = TipoServico.converteCodigo(novoTipoServicoOpcao);
                 if (novoTipoServico != null) {
                     String novaDescricaoServico = viewAgendamento.getDescricaoOutro();
-                    agendamento.setServico(new Servico(gerarProximoIdServico(), novoTipoServico.getDescricao(), novaDescricaoServico != null ? novaDescricaoServico : novoTipoServico.getDescricao(), novoTipoServico.getPreco(), novoTipoServico));
+                    agendamento.setServico(new Servico(gerarProximoIdServico(), novoTipoServico.getDescricao(), 
+                            novaDescricaoServico != null ? novaDescricaoServico : novoTipoServico.getDescricao(), novoTipoServico.getPreco(), novoTipoServico));
                 } else {
                     System.out.println("Tipo de serviço inválido!");
                     return;
@@ -213,8 +219,8 @@ public class AgendamentoController {
     private void mostrarAgendamento() {
         int id = viewAgendamento.getIdAgendamento();
         Optional<Agendamento> agendamentoOptional = RepositorioGeral.getAgendamentos().stream()
-                                                            .filter(a -> a.getIdAgendamento() == id)
-                                                            .findFirst();
+                                                .filter(a -> a.getIdAgendamento() == id).findFirst();
+                                                            
         if (agendamentoOptional.isPresent()) {
             viewAgendamento.mostraAgendamento(agendamentoOptional.get());
         } else {
@@ -229,16 +235,13 @@ public class AgendamentoController {
     
     private int gerarProximoIdAgendamento() {
         return RepositorioGeral.getAgendamentos().stream()
-                .mapToInt(Agendamento::getIdAgendamento)
-                .max()
-                .orElse(0) + 1;
+                .mapToInt(Agendamento::getIdAgendamento).max().orElse(0) + 1;
+                            
     }
 
     private int gerarProximoIdServico() {
         return RepositorioGeral.getServicos().stream()
-                .mapToInt(Servico::getIdServico)
-                .max()
-                .orElse(0) + 1;
+                .mapToInt(Servico::getIdServico).max().orElse(0) + 1;             
     }
 
     @Override 

@@ -21,13 +21,13 @@ public class FuncionarioView {
      * @return um número inteiro correspondente à opção selecionada pelo usuário
      */
     public int mostraOpcoesFuncionario(){
-        System.out.println("\nDigite a opção que deseja executar: ");
-        System.out.println("1 - Incluir Funcionário");
-        System.out.println("2 - Editar Funcionário");
-        System.out.println("3 - Remover Funcionário");
-        System.out.println("4 - Mostrar dados de um Funcionário");
-        System.out.println("5 - Listar Todos os Funcionários");
-        System.out.println("6 - Sair");
+         System.out.println("\nDigite a opção que deseja executar: ");
+         System.out.println("1 - Incluir Funcionário");
+         System.out.println("2 - Editar Funcionário");
+         System.out.println("3 - Remover Funcionário");
+         System.out.println("4 - Mostrar dados de um Funcionário");
+         System.out.println("5 - Listar Todos os Funcionários");
+         System.out.println("6 - Sair");
 
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -134,7 +134,7 @@ public class FuncionarioView {
      * @return ID do novo funcionário
      */
     public int getNewFuncionarioId(){
-        System.out.println("Digite o ID para o novo funcionário: ");
+      System.out.println("Digite o ID para o novo funcionário: ");
         int id = leituraDados.nextInt();
         leituraDados.nextLine();
         return id;
@@ -147,6 +147,7 @@ public class FuncionarioView {
      */
     public void mostraFuncionario(Funcionario funcionario){
         System.out.println("\n--- Dados do Funcionário ---");
+        
         System.out.println("ID: " + funcionario.getIdFuncionario());
         System.out.println("Nome: " + funcionario.getNome());
         System.out.println("Endereço: " + funcionario.getEndereco());
@@ -165,13 +166,13 @@ public class FuncionarioView {
      * @return Opção de edição
      */
     public int editaFuncionario(){
-        System.out.println("O que deseja editar?");
-        System.out.println("1 - Endereço");
-        System.out.println("2 - Telefone");
-        System.out.println("3 - Email");
-        System.out.println("4 - Senha");
-        System.out.println("5 - Cargo");
-        System.out.println("6 - Salário");
+       System.out.println("O que deseja editar?");
+       System.out.println("1 - Endereço");
+       System.out.println("2 - Telefone");
+       System.out.println("3 - Email");
+       System.out.println("4 - Senha");
+       System.out.println("5 - Cargo");
+       System.out.println("6 - Salário");
 
         int opcao = leituraDados.nextInt();
         leituraDados.nextLine();
@@ -195,19 +196,19 @@ public class FuncionarioView {
      */
     public void mostraListaFuncionarios(List<Funcionario> funcionarios) {
         if (funcionarios.isEmpty()) {
-            System.out.println("Nenhum funcionário cadastrado.");
+           System.out.println("Nenhum funcionário cadastrado.");
             return;
         }
         System.out.println("\n--- Lista de Funcionários ---");
         for (Funcionario funcionario : funcionarios) {
-            System.out.println("ID: " + funcionario.getIdFuncionario() + ", Nome: " + funcionario.getNome() + ", Cargo: " + funcionario.getCargo());
+           System.out.println("ID: " + funcionario.getIdFuncionario() + ", Nome: " + funcionario.getNome() + ", Cargo: " + funcionario.getCargo());
         }
         System.out.println("-----------------------------\n");
     }
     
     @Override
     public String toString(){
-        return "- Interface do Funcionário -";
+        return "-- Interface do Funcionário --";
     }
     
     /**

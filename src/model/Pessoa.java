@@ -2,7 +2,7 @@ package model;
 
 /**
  * Classe abstrata que representa uma pessoa com informações básicas: nome, endereço, telefone, email e CPF.
- * Esta classe serve como base para classes que representam tipos específicos de pessoas como, funcionários, clientes e gerente.
+ * Esta classe serve como base para classes que representam tipos específicos de pessoas como, funcionários, clientes e gerente(vão herdar dessa).
  */
 public abstract class Pessoa {
     private String nome;

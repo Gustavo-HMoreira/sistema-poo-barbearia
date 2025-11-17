@@ -141,7 +141,8 @@ public class Produto {
      */
     @Override
     public String toString(){
-        return "ID: " + idProduto + ", Nome: " + nome + ", Descrição: " + descricao + ", Valor Unitário: R$" + String.format("%.2f", valorUnitario) + ", Estoque: " + quantidadeEstoque;
+        return "ID: " + idProduto + ", Nome: " + nome + ", Descrição: " + descricao + ", Valor Unitário: R$" 
+               + String.format("%.2f", valorUnitario) + ", Estoque: " + quantidadeEstoque;
     }
 }
 

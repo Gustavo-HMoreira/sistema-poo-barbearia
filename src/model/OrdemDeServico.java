@@ -16,7 +16,7 @@ public class OrdemDeServico {
     private List<ServicoRealizado> servicosRealizados;
     private LocalDateTime dataHora;
     private double valorTotal;
-    private String status; // "ABERTA", "EM_ANDAMENTO", "CONCLUIDA", "CANCELADA"
+    private String status; // "aberta", "em andamento", "concluida", "cancelada"
     
     /**
      * Classe interna para representar um serviço realizado dentro da ordem.

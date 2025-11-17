@@ -2,7 +2,7 @@ package model;
 
 /**
  * Representa uma estação de atendimento na barbearia.
- * A barbearia possui 3 estações fixas onde os atendimentos são realizados.
+ * A barbearia possui 3 estações fixas onde os atendimentos vão ser realizados.
  * Cada estação pode estar ocupada ou disponível e pode ter um agendamento alocado.
  */
 public class EstacaoAtendimento {
@@ -13,8 +13,7 @@ public class EstacaoAtendimento {
     /**
      * Construtor da classe EstacaoAtendimento.
      * Inicializa uma estação de atendimento com ID específico.
-     * Por padrão, a estação é criada como disponível (não ocupada).
-     * 
+     * Como padão vem não ocupada
      * @param id Identificador único da estação de atendimento.
      */
     public EstacaoAtendimento(int id) {
@@ -109,6 +108,6 @@ public class EstacaoAtendimento {
      */
     @Override
     public String toString() {
-        return "Estacao{" + "id=" + id + ", ocupada=" + ocupada + ", atendimento=" + idAtendimento + "}";
+        return "Estacao{" + "id: " + id + ", ocupada: " + ocupada + ", atendimento: " + idAtendimento + "}";
     }
 }

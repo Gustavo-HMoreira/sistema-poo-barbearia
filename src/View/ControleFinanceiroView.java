@@ -63,7 +63,7 @@ public class ControleFinanceiroView {
      * @return Data da transação
      */
     public LocalDate getDataTransacao(){
-        System.out.println("Digite a data da transação (dd/MM/yyyy): ");
+        System.out.println("Digite a data da transação ( dd/MM/yyyy ): ");
         String dataStr = leituraDados.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(dataStr, formatter);
@@ -104,14 +104,14 @@ public class ControleFinanceiroView {
      */
     public void mostraRelatorioMensal(List<Transacoes> transacoes, int mes, int ano) {
         System.out.println("\n========================================");
-        System.out.println("  RELATÓRIO MENSAL - " + String.format("%02d", mes) + "/" + ano);
+        System.out.println("  RELATÓRIO MENSAL - " + String.format("%02d", mes) + "/" + ano);//tem que definir a largura com %02d
         System.out.println("========================================");
         if (transacoes.isEmpty()) {
             System.out.println("Nenhuma transação registrada para este mês.");
             return;
         }
 
-        double totalReceitas = 0;
+        double totalReceitas = 0;  //iniciadas com 0 para não puxar valores aleatórios na memória
         double totalDespesas = 0;
 
         System.out.println("\n--- Receitas ---");
@@ -144,7 +144,7 @@ public class ControleFinanceiroView {
      */
     public void mostraBalancoMensal(double totalReceitas, double totalDespesas, int mes, int ano) {
         System.out.println("\n========================================");
-        System.out.println("  BALANÇO MENSAL - " + String.format("%02d", mes) + "/" + ano);
+        System.out.println(" - BALANÇO MENSAL -- " + String.format("%02d", mes) + "/" + ano);
         System.out.println("========================================");
         System.out.println("Total de Receitas: R$ " + String.format("%.2f", totalReceitas));
         System.out.println("Total de Despesas: R$ " + String.format("%.2f", totalDespesas));
@@ -154,7 +154,7 @@ public class ControleFinanceiroView {
 
     @Override 
     public String toString(){
-        return "- Interface Financeira -";
+        return "-- Interface Financeira --";
     }
 }
 

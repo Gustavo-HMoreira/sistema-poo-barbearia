@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * Classe utilitária para operações de busca utilizando Iterator e Comparator.
- * Questão 17: Implementa método find para clientes.
+ * Questao 17: Implementa método find para clientes.
  */
 public class BuscaUtil {
     
     /**
-     * Questão 17: Busca um cliente em uma lista usando Iterator e Comparator.
+     * Q17: Busca um cliente em uma lista usando Iterator e Comparator.
      * Este método percorre a lista usando Iterator e compara cada elemento
      * com o cliente buscado usando o Comparator fornecido.
      * 
@@ -31,13 +31,13 @@ public class BuscaUtil {
         while (iterator.hasNext()) {
             Cliente clienteAtual = iterator.next();
             
-            // Se o comparator retorna 0, significa que os elementos são iguais
+            // Se o comparator retorna 0, os elementos são iguais
             if (comparator.compare(clienteAtual, clienteBuscado) == 0) {
                 return clienteAtual;
             }
         }
         
-        return null; // Cliente não encontrado
+        return null; // Cliente não foi encontrado
     }
     
     /**

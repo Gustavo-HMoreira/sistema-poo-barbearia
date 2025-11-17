@@ -149,7 +149,8 @@ public class Agendamento {
      */
     @Override
     public String toString() {
-        return "Agendamento ID: " + idAgendamento + ", Cliente: " + cliente.getNome() + ", Serviço: " + servico.getNomeServico() + ", Barbeiro: " + barbeiroResponsavel.getNome() + ", Data/Hora: " + dataHora + ", Status: " + statusAgendamento.getDescricao();
+        return "Agendamento ID: " + idAgendamento + ", Cliente: " + cliente.getNome() + ", Serviço: " + servico.getNomeServico() 
+               + ", Barbeiro: " + barbeiroResponsavel.getNome() + ", Data/Hora: " + dataHora + ", Status: " + statusAgendamento.getDescricao();
     }
 }
 

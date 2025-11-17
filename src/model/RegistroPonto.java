@@ -3,6 +3,12 @@ package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+    /**
+     * 
+     * Registro de ponto completo do funcionário, com controle de horas!
+     *
+     */
+
 public class RegistroPonto {
     private int idFuncionario;
     private LocalDateTime dataHora;

@@ -44,8 +44,8 @@ public class PontoController {
     private void registrarPonto(TipoPonto tipo) {
         int idFuncionario = pontoView.getIdFuncionarioParaRegistro();
         Optional<Funcionario> funcionarioOptional = RepositorioGeral.getFuncionarios().stream()
-                .filter(f -> f.getIdFuncionario() == idFuncionario)
-                .findFirst();
+                .filter(f -> f.getIdFuncionario() == idFuncionario).findFirst();
+                
 
         if (funcionarioOptional.isPresent()) {
             RegistroPonto novoRegistro = new RegistroPonto(idFuncionario, LocalDateTime.now(), tipo);
@@ -65,8 +65,8 @@ public class PontoController {
             registrosFiltrados = RepositorioGeral.getRegistrosPonto();
         } else {
             registrosFiltrados = RepositorioGeral.getRegistrosPonto().stream()
-                    .filter(r -> r.getIdFuncionario() == idFuncionario)
-                    .collect(Collectors.toList());
+                .filter(r -> r.getIdFuncionario() == idFuncionario).collect(Collectors.toList());
+                    
         }
         pontoView.mostraRegistrosPonto(registrosFiltrados);
     }

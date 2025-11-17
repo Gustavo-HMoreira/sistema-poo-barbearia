@@ -75,7 +75,7 @@ public class AgendamentoView {
     
     /**
      * Solicita a data e o horário do agendamento.
-     * O formato esperado é: "DD MM AAAA HH MM".
+     * O formato esperado é: "DD/MM/AAAA HH:MM".
      * 
      * @return String com a dara e hora digitados.
      */
@@ -102,7 +102,7 @@ public class AgendamentoView {
     }
     
     /**
-     * Caso o tipo de agendamento seja "Outro", solicita uma descrição ao usuário.
+     * Caso o tipo de agendamento seja "Outro", solicita uma descrição ao usuário, para que ele mesma insira manualmente.
      * 
      * @return Descrição personalizada do tipo de agendamento ou null se não aplicável.
      */
@@ -129,12 +129,12 @@ public class AgendamentoView {
      */
     public void mostraAgendamento(Agendamento agendamento){
         System.out.println("ID do agendamento: " + agendamento.getIdAgendamento() + "\n" + 
-                           "ID do cliente: " + agendamento.getCliente().getIdCliente() + "\n" +
-                           "Barbeiro responsável: " + agendamento.getBarbeiroResponsavel().getNome() + "\n" +
-                           "Status agendamento: " + agendamento.getStatusAgendamento().getDescricao() + "\n" +
-                           "Agendamento marcado para: " + agendamento.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "\n" +
-                           "Tipo do serviço: " + agendamento.getServico().getNomeServico() + "\n" +       
-                           "Valor do serviço: R$ " + String.format("%.2f", agendamento.getServico().getPreco()) + "\n");
+        "ID do cliente: " + agendamento.getCliente().getIdCliente() + "\n" +
+        "Barbeiro responsável: " + agendamento.getBarbeiroResponsavel().getNome() + "\n" +
+        "Status agendamento: " + agendamento.getStatusAgendamento().getDescricao() + "\n" +
+        "Agendamento marcado para: " + agendamento.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "\n" +
+        "Tipo do serviço: " + agendamento.getServico().getNomeServico() + "\n" +       
+        "Valor do serviço: R$ " + String.format("%.2f", agendamento.getServico().getPreco()) + "\n");
     }
     
     /**
@@ -149,18 +149,18 @@ public class AgendamentoView {
      */
     public String confirmaConfirmacaoAgendamento(){
         System.out.println("Tem certeza que deseja confirmar este agendamento? \n"
-                         + "Digite [S] para confirmar ou [N] para abortar a operação!! \n");
+        + "Digite [S] para confirmar ou [N] para abortar a operação!! \n");
         return leituraDados.nextLine();
     }
 
     /**
      * Solicita confirmação de cancelamento do agendamento ao usuário.
      * 
-     * @return String com a resposta do usuário (S/N).
+     * @return String com a resposta do usuário sim/não (S/N).
      */
     public String confirmaExclusaoDoAgendamento(){
         System.out.println("Tem certeza que deseja cancelar este agendamento? \n"
-                         + "Digite [S] para confirmar ou [N] para abortar a operação!! \n");
+        + "Digite [S] para confirmar ou [N] para abortar a operação!! \n");
         return leituraDados.nextLine();
     }
 
@@ -178,14 +178,14 @@ public class AgendamentoView {
         System.out.println("LISTA DE AGENDAMENTOS");
         for (Agendamento agendamento : agendamentos) {
             System.out.println("ID: " + agendamento.getIdAgendamento() + 
-                             " | Cliente: " + agendamento.getCliente().getNome() + 
-                             " | Barbeiro: " + agendamento.getBarbeiroResponsavel().getNome() +
-                             " | Data: " + agendamento.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +
-                             " | Serviço: " + agendamento.getServico().getNomeServico() +
-                             " | Status: " + agendamento.getStatusAgendamento().getDescricao());
+                  " | Cliente: " + agendamento.getCliente().getNome() + 
+           " | Barbeiro: " + agendamento.getBarbeiroResponsavel().getNome() +
+            " | Data: " + agendamento.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +
+            " | Serviço: " + agendamento.getServico().getNomeServico() +
+            " | Status: " + agendamento.getStatusAgendamento().getDescricao());
         }
-        System.out.println("============================================================");
-    }
+        System.out.println("------------------------------------------------------------");
+    }                       
     
     /**
      * Exibe opções de edição do agendamento e retorna a escolhida.
@@ -193,7 +193,7 @@ public class AgendamentoView {
      * @return Número da opção escolhida para a edição. 
      */
     public int editaAgendamento(){
-        System.out.println("Digite o campo que você gostaria de editar!");
+        System.out.println("Digite o campo que você gostaria de editar:");
         System.out.println("1 - Data e Hora");
         System.out.println("2 - Barbeiro responsável");
         System.out.println("3 - Serviço");

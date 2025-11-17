@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Cliente extends Pessoa{
     
-    // Questão 12: Lista de Ordens de Serviço do Cliente
+    // q12: Lista de Ordens de Serviço do Cliente
     private List<OrdemDeServico> ordensDeServico;
 /**
  * Atributo estático com o intuito de incrementar um digito cada vez que é criado um novo cliente. 
@@ -62,7 +62,7 @@ public class Cliente extends Pessoa{
     }
 
     /**
-     * Adiciona uma Ordem de Serviço à lista do cliente.
+     * Adiciona uma Ordem de Serviço a lista do cliente.
      * 
      * @param ordem Ordem de Serviço a ser adicionada.
      */

@@ -15,7 +15,7 @@ public class NotaFiscalView {
     private Scanner leituraDados = new Scanner(System.in);
 
     public int mostraOpcoesNotaFiscal() {
-        System.out.println("\n--- Menu de Notas Fiscais ---");
+        System.out.println("\n-$- Menu de Notas Fiscais -$-");
         System.out.println("1 - Gerar Nova Nota Fiscal");
         System.out.println("2 - Mostrar Nota Fiscal por ID");
         System.out.println("3 - Listar Todas as Notas Fiscais");
@@ -23,7 +23,7 @@ public class NotaFiscalView {
         System.out.println("5 - Sair");
         System.out.print("Escolha uma opção: ");
         int opcao = leituraDados.nextInt();
-        leituraDados.nextLine(); // Consumir a nova linha
+        leituraDados.nextLine(); // Consumir a linha
         return opcao;
     }
 
@@ -54,7 +54,7 @@ public class NotaFiscalView {
      * @return O número da opção escolhida (1, 2 ou 3).
      */
     public int getFormaPagamento() {
-        System.out.println("\n--- Selecionar Forma de Pagamento ---");
+        System.out.println("\n- $ - Selecionar Forma de Pagamento - $ -");
         System.out.println("1 - Pix");
         System.out.println("2 - Cartão de Crédito");
         System.out.println("3 - Dinheiro");
@@ -64,7 +64,7 @@ public class NotaFiscalView {
         return opcao;
     }
 
-    public List<Servico> getServicos(List<Servico> servicosDisponiveis) {
+    public List<Servico> getServicos(List<Servico> servicosDisponiveis) {//lista do de obj do tipo serviço
         List<Servico> servicosSelecionados = new ArrayList<>();
         System.out.println("\n--- Selecionar Serviços ---");
         if (servicosDisponiveis.isEmpty()) {
@@ -73,10 +73,10 @@ public class NotaFiscalView {
         }
 
         System.out.println("Serviços disponíveis:");
-        servicosDisponiveis.forEach(System.out::println);
+        servicosDisponiveis.forEach(System.out::println);//percorre cada elemento com o forEach e o print :: imprime de todos 
 
         while (true) {
-            System.out.print("Digite o ID do serviço a adicionar (ou 0 para finalizar): ");
+           System.out.print("Digite o ID do serviço a adicionar (ou 0 para finalizar): ");
             int idServico = leituraDados.nextInt();
             leituraDados.nextLine();
 
@@ -85,9 +85,8 @@ public class NotaFiscalView {
             }
 
             Optional<Servico> servicoOptional = servicosDisponiveis.stream()
-                    .filter(s -> s.getIdServico() == idServico)
-                    .findFirst();
-
+            .filter(s -> s.getIdServico() == idServico).findFirst();
+                    
             if (servicoOptional.isPresent()) {
                 servicosSelecionados.add(servicoOptional.get());
                 System.out.println("Serviço adicionado.");
@@ -99,8 +98,8 @@ public class NotaFiscalView {
     }
 
     public List<Produto> getProdutos(List<Produto> produtosDisponiveis) {
-        List<Produto> produtosSelecionados = new ArrayList<>();
-        System.out.println("\n--- Selecionar Produtos ---");
+         List<Produto> produtosSelecionados = new ArrayList<>();
+           System.out.println("\n--- Selecionar Produtos ---");
         if (produtosDisponiveis.isEmpty()) {
             System.out.println("Nenhum produto disponível para seleção.");
             return produtosSelecionados;
@@ -110,7 +109,7 @@ public class NotaFiscalView {
         produtosDisponiveis.forEach(System.out::println);
 
         while (true) {
-            System.out.print("Digite o ID do produto a adicionar (ou 0 para finalizar): ");
+             System.out.print("Digite o ID do produto a adicionar (ou 0 para finalizar): ");
             int idProduto = leituraDados.nextInt();
             leituraDados.nextLine();
 
@@ -119,19 +118,18 @@ public class NotaFiscalView {
             }
 
             Optional<Produto> produtoOptional = produtosDisponiveis.stream()
-                    .filter(p -> p.getIdProduto() == idProduto)
-                    .findFirst();
-
+                   .filter(p -> p.getIdProduto() == idProduto).findFirst();
+                    
             if (produtoOptional.isPresent()) {
                 System.out.print("Digite a quantidade: ");
                 int quantidade = leituraDados.nextInt();
                 leituraDados.nextLine();
                 Produto produtoOriginal = produtoOptional.get();
                 produtosSelecionados.add(new Produto(produtoOriginal.getIdProduto(), produtoOriginal.getNome(),
-                        produtoOriginal.getDescricao(), produtoOriginal.getValorUnitario(), quantidade));
-                System.out.println("Produto adicionado.");
+                    produtoOriginal.getDescricao(), produtoOriginal.getValorUnitario(), quantidade));
+               System.out.println("Produto adicionado.");
             } else {
-                System.out.println("Produto não encontrado.");
+               System.out.println("Produto não encontrado.");
             }
         }
         return produtosSelecionados;
@@ -147,13 +145,15 @@ public class NotaFiscalView {
             return;
         }
         System.out.println("\n--- Lista de Notas Fiscais ---");
-        notasFiscais.forEach(nf -> System.out.println("ID: " + nf.getIdNotaFiscal() + ", Cliente: " + nf.getCliente().getNome() + ", Valor Total: R$ " + String.format("%.2f", nf.getValorTotal())));
+        notasFiscais.forEach(nf -> System.out.println("ID: " + nf.getIdNotaFiscal() + ", Cliente: " + nf.getCliente().getNome() 
+                             + ", Valor Total: R$ " + String.format("%.2f", nf.getValorTotal())));
+        
         System.out.println("------------------------------");
     }
 
     @Override
     public String toString() {
-        return "- Interface de Notas Fiscais -";
+        return "+ Interface de Notas Fiscais +";
     }
 }
 

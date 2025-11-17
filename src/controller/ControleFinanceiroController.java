@@ -20,7 +20,7 @@ public class ControleFinanceiroController {
             opcao = viewControleFinanceiro.mostraOpcoesControleFinanceiro();
 
             if (opcao == 5) {
-                System.out.println("Saindo do controle financeiro...");
+                System.out.println("Saindo do controle financeiro ...");
                 break;
             }
 
@@ -47,9 +47,11 @@ public class ControleFinanceiroController {
         String descricao = viewControleFinanceiro.getDescricaoTransacao();
         double valor = viewControleFinanceiro.getValorTransacao();
         LocalDate data = viewControleFinanceiro.getDataTransacao();
+        
         Transacoes receita = new Transacoes(descricao, valor, data, Transacoes.TipoTransacao.RECEITA);
         RepositorioGeral.getTransacoes().add(receita);
         RepositorioGeral.salvarDados();
+        
         System.out.println("Receita adicionada com sucesso!");
     }
 
@@ -57,6 +59,7 @@ public class ControleFinanceiroController {
         String descricao = viewControleFinanceiro.getDescricaoTransacao();
         double valor = viewControleFinanceiro.getValorTransacao();
         LocalDate data = viewControleFinanceiro.getDataTransacao();
+        
         Transacoes despesa = new Transacoes(descricao, valor, data, Transacoes.TipoTransacao.DESPESA);
         RepositorioGeral.getTransacoes().add(despesa);
         RepositorioGeral.salvarDados();
@@ -68,9 +71,8 @@ public class ControleFinanceiroController {
         int ano = viewControleFinanceiro.getAnoRelatorio();
 
         List<Transacoes> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
-                .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano)
-                .collect(Collectors.toList());
-
+              .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano).collect(Collectors.toList());  
+                
         viewControleFinanceiro.mostraRelatorioMensal(transacoesDoMes, mes, ano);
     }
 
@@ -79,19 +81,17 @@ public class ControleFinanceiroController {
         int ano = viewControleFinanceiro.getAnoRelatorio();
 
         List<Transacoes> transacoesDoMes = RepositorioGeral.getTransacoes().stream()
-                .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano)
-                .collect(Collectors.toList());
+          .filter(t -> t.getData().getMonthValue() == mes && t.getData().getYear() == ano).collect(Collectors.toList());
+                
 
         double totalReceitas = transacoesDoMes.stream()
-                .filter(t -> t.getTipo() == Transacoes.TipoTransacao.RECEITA)
-                .mapToDouble(Transacoes::getValor)
-                .sum();
+         .filter(t -> t.getTipo() == Transacoes.TipoTransacao.RECEITA).mapToDouble(Transacoes::getValor).sum();
+                
 
+                
         double totalDespesas = transacoesDoMes.stream()
-                .filter(t -> t.getTipo() == Transacoes.TipoTransacao.DESPESA)
-                .mapToDouble(Transacoes::getValor)
-                .sum();
-
+               .filter(t -> t.getTipo() == Transacoes.TipoTransacao.DESPESA).mapToDouble(Transacoes::getValor).sum();
+                        
         viewControleFinanceiro.mostraBalancoMensal(totalReceitas, totalDespesas, mes, ano);
     }
 
