@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Classe utilitária para operações de busca utilizando Iterator e Comparator.
- * Questao 17: Implementa método find para clientes.
+ * Q 17: Implementa método find para clientes.
  */
 public class BuscaUtil {
     

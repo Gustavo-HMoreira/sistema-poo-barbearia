@@ -26,5 +26,75 @@
     "cpf": {
       "numeroCPF": "13739406623"
     }
+  },
+  {
+    "idFuncionario": 3,
+    "usuario": "matheus",
+    "senha": "matheus",
+    "cargo": "barbeiro",
+    "salario": 3154.0,
+    "nome": "Matheus",
+    "endereco": "Praça Correa Rabelo 93",
+    "telefone": "38998983011",
+    "email": "matheus-moreira74@comdados.com",
+    "cpf": {
+      "numeroCPF": "86741252630"
+    }
+  },
+  {
+    "idFuncionario": 4,
+    "usuario": "pedro",
+    "senha": "pedro",
+    "cargo": "barbeiro",
+    "salario": 3154.0,
+    "nome": "Pedro",
+    "endereco": "Praça Nossa Senhora Auxiliadora 90",
+    "telefone": "38987141007",
+    "email": "pedro_novaes@yahho.com.br",
+    "cpf": {
+      "numeroCPF": "86316216688"
+    }
+  },
+  {
+    "idFuncionario": 5,
+    "usuario": "dayvid",
+    "senha": "dayvid",
+    "cargo": "barbeiro",
+    "salario": 3154.0,
+    "nome": "Dayvid",
+    "endereco": "Rua Padre Bartolomeu Sipolis 112-B",
+    "telefone": "38985271199",
+    "email": "dayvidmarcelosilveira@right.com.br",
+    "cpf": {
+      "numeroCPF": "13087796662"
+    }
+  },
+  {
+    "idFuncionario": 6,
+    "usuario": "vitor",
+    "senha": "vitor",
+    "cargo": "recepcionista",
+    "salario": 2043.0,
+    "nome": "Vitor",
+    "endereco": "Praça Nossa Senhora Auxiliadora 100",
+    "telefone": "38982897040",
+    "email": "vitorgalles05@comdados.com",
+    "cpf": {
+      "numeroCPF": "38093743693"
+    }
+  },
+  {
+    "idFuncionario": 7,
+    "usuario": "gustavo",
+    "senha": "gustavo",
+    "cargo": "gerente",
+    "salario": 4000.0,
+    "nome": "Gustavo",
+    "endereco": "Praça Correa Rabelo 30",
+    "telefone": "38995945771",
+    "email": "gustavojunior30@comdados.com",
+    "cpf": {
+      "numeroCPF": "76334995677"
+    }
   }
 ]

@@ -152,7 +152,7 @@ public class NotaFiscalController {
     private void buscarNotasFiscaisPorCliente() {
         int idCliente = viewNotaFiscal.getIdCliente();
         Optional<Cliente> clienteOptional = RepositorioGeral.getClientes().stream()
-                                         .filter(c -> c.getIdCliente() == idCliente).findFirst();
+                                       .filter(c -> c.getIdCliente() == idCliente).findFirst();
                                                     
         if (!clienteOptional.isPresent()) {
             System.out.println("Cliente não encontrado!");

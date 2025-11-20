@@ -99,10 +99,10 @@ public class FilaAtendimento {
             sb.append("Agendamentos na fila:\n");
             int posicao = 1;
             for (Agendamento agend : fila) {
-                sb.append(posicao).append(". Cliente: ").append(agend.getCliente().getNome());
-                sb.append(" - Serviço: ").append(agend.getServico().getNomeServico());
-                sb.append(" - ID: ").append(agend.getIdAgendamento()).append("\n");
-                posicao++;
+               sb.append(posicao).append(". Cliente: ").append(agend.getCliente().getNome());
+               sb.append(" - Serviço: ").append(agend.getServico().getNomeServico());
+               sb.append(" - ID: ").append(agend.getIdAgendamento()).append("\n");
+               posicao++;
             }
         } else {
             sb.append("Fila vazia.\n");

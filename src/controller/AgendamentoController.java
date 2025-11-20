@@ -95,7 +95,7 @@ public class AgendamentoController {
         Funcionario barbeiro = barbeiroOptional.get();
 
         String dataHoraStr = viewAgendamento.getDataHoraAgendamento();
-        LocalDateTime dataHora = LocalDateTime.parse(dataHoraStr, DateTimeFormatter.ofPattern("DD/MM/YYYY HH:mm"));
+        LocalDateTime dataHora = LocalDateTime.parse(dataHoraStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
         int tipoServicoOpcao = viewAgendamento.getTipoServico();
         TipoServico tipoServico = TipoServico.converteCodigo(tipoServicoOpcao);
@@ -178,7 +178,7 @@ public class AgendamentoController {
         switch (opcao) {
             case 1: {
                 String novaDataHoraStr = viewAgendamento.getDataHoraAgendamento();
-                agendamento.setDataHora(LocalDateTime.parse(novaDataHoraStr, DateTimeFormatter.ofPattern("DD/MM/YYYY HH:MM")));
+                agendamento.setDataHora(LocalDateTime.parse(novaDataHoraStr, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
             }
                 break;
             case 2: {

@@ -27,7 +27,7 @@ public class ClienteView {
           System.out.println("3 - Remover Cliente");
 	  System.out.println("4 - Mostrar dados de um Cliente");
 	  System.out.println("5 - Listar Todos os Clientes");
-	  System.out.println("6 - Imprimir Ordens de Serviço do Cliente (Questão 8)");
+	  System.out.println("6 - Imprimir Ordens de Serviço do Cliente");
 	  System.out.println("7 - Sair");
         
         int opcao = leituraDados.nextInt();

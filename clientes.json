@@ -18,5 +18,115 @@
     "cpf": {
       "numeroCPF": "13739406623"
     }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 1,
+    "nome": "Daniel André Caio Teixeira",
+    "endereco": "Rua Padre Bartolomeu Sipolis 112-B",
+    "telefone": "3835270966",
+    "email": "daniel_andre_teixeira@fabiooliva.com.br",
+    "cpf": {
+      "numeroCPF": "20870508644"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 3,
+    "nome": "Heitor Yuri Juan Pinto",
+    "endereco": "Praça Correa Rabelo 70",
+    "telefone": "38993820927",
+    "email": "heitor-pinto74@texfuse.com.br",
+    "cpf": {
+      "numeroCPF": "61009643681"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 4,
+    "nome": "Enrico Kaique Vieira",
+    "endereco": "Rua Padre Bartolomeu Sipolis 112-B",
+    "telefone": "38984979071",
+    "email": "enrico_kaique_vieira@aulicinobastos.com.br",
+    "cpf": {
+      "numeroCPF": "92415769606"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 5,
+    "nome": "Calebe Felipe Aragão",
+    "endereco": "Praça Correa Rabelo 93",
+    "telefone": "38996541171",
+    "email": "calebefelipearagao@custodes.com.br",
+    "cpf": {
+      "numeroCPF": "34776670690"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 6,
+    "nome": "Filipe Severino da Rocha",
+    "endereco": "Rua Padre Bartolomeu Sipolis 112-B",
+    "telefone": "38999406200",
+    "email": "filipe-darocha89@atualvendas.com",
+    "cpf": {
+      "numeroCPF": "84827202605"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 7,
+    "nome": "Carlos Eduardo Paulo Porto",
+    "endereco": "Praça Nossa Senhora Auxiliadora 98",
+    "telefone": "38994819143",
+    "email": "carlos_eduardo_porto@achievecidadenova.com.br",
+    "cpf": {
+      "numeroCPF": "99307494622"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 8,
+    "nome": "Cláudio Cauê Pires",
+    "endereco": "Praça Nossa Senhora Auxiliadora 66",
+    "telefone": "38983621850",
+    "email": "claudio_pires@marcati.com",
+    "cpf": {
+      "numeroCPF": "09858256698"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 9,
+    "nome": "Danilo Murilo Levi das Neves",
+    "endereco": "Praça Nossa Senhora Auxiliadora 67",
+    "telefone": "38988465769",
+    "email": "danilo.murilo.dasneves@yahho.com.br",
+    "cpf": {
+      "numeroCPF": "08602470665"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 10,
+    "nome": "Manuel Bento Barros",
+    "endereco": "Rua Padre Bartolomeu Sipolis 112-C",
+    "telefone": "38993547200",
+    "email": "manuelbentobarros@suplementototal.com.br",
+    "cpf": {
+      "numeroCPF": "32950339603"
+    }
+  },
+  {
+    "ordensDeServico": [],
+    "idCliente": 11,
+    "nome": "Raimundo Thiago Tomás dos Santos",
+    "endereco": "Praça Nossa Senhora Auxiliadora 80",
+    "telefone": "38991503490",
+    "email": "raimundo-dossantos98@outlock.com.br",
+    "cpf": {
+      "numeroCPF": "32334753653"
+    }
   }
 ]

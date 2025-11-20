@@ -4,6 +4,55 @@
     "nome": "pomada",
     "descricao": "pomada hidratante",
     "valorUnitario": 35.0,
-    "quantidadeEstoque": 0
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 2,
+    "nome": "Shampoo",
+    "descricao": "Limpa profundamente os fios e o couro cabeludo, removendo impurezas e oleosidade sem ressecar.",
+    "valorUnitario": 39.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 3,
+    "nome": "Condicionador",
+    "descricao": "Hidrata e desembaraça os fios, deixando o cabelo mais macio, alinhado e fácil de pentear.",
+    "valorUnitario": 42.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 4,
+    "nome": "Pós Barba",
+    "descricao": "Acalma a pele após o barbear, reduz irritações e hidrata, deixando uma sensação refrescante.",
+    "valorUnitario": 29.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 5,
+    "nome": "Grooming",
+    "descricao": "Modelador leve para barba ou cabelo, ajuda a alinhar, hidratar e dar forma com aspecto natural.",
+    "valorUnitario": 49.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 6,
+    "nome": "Pomada em Pó",
+    "descricao": "Proporciona volume instantâneo e fixação leve a média, com acabamento seco e natural.",
+    "valorUnitario": 34.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 7,
+    "nome": "Minoxidil 8%",
+    "descricao": "Tônico de alta concentração que estimula o crescimento capilar e fortalece fios enfraquecidos.",
+    "valorUnitario": 79.9,
+    "quantidadeEstoque": 100
+  },
+  {
+    "idProduto": 8,
+    "nome": "Gel Shaving",
+    "descricao": "Gel de barbear que facilita o deslize da lâmina, reduz cortes e irritações e proporciona maior conforto.",
+    "valorUnitario": 27.9,
+    "quantidadeEstoque": 100
   }
 ]
