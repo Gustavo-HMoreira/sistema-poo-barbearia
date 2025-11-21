@@ -97,7 +97,7 @@ public class EstacaoAtendimento {
      * Marca a estação como disponível e remove o ID do atendimento.
      */
     public void liberarEstacao() {
-        this.ocupada = false;
+        this.ocupada = false; //disponível
         this.idAtendimento = null;
     }
     
